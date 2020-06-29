@@ -106,8 +106,7 @@ LOGIN_REDIRECT_URL = '/'
 # DJANGO CRISOY FORMS
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-
-usr_pwd = os.environ[EML_PWD]
+usr_pwd = os.environ['EML_PWD']
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
