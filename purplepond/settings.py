@@ -111,11 +111,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_HOST_USER = 'purpleponds@outlook.com'
-EMAIL_HOST_PASSWORD = usr_pwd
+EMAIL_HOST_PASSWORD = os.getenv('EML_PWD')
 DEFAULT_FROM_EMAIL = 'purpleponds@outlook.com'
 EMAIL_PORT = '587'
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
-
-print(usr_pwd)
