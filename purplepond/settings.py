@@ -10,7 +10,6 @@ ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 DEBUG = True
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj'
-STRIPE_SECRET_KEY = 'sk_test_51GyJKwK1qXszeE1pOwO1MaJOcQusugL9bGUx9jb4LUENtxW1lPmebpiJymya3YzO9dLub0CCfjaQ1a4ybZaX3J7j00SbC3DZIp'
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
@@ -112,7 +111,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_HOST_USER = 'purpleponds@outlook.com'
-EMAIL_HOST_PASSWORD = 'temp101I#'
+EMAIL_HOST_PASSWORD = usr_pwd
 DEFAULT_FROM_EMAIL = 'purpleponds@outlook.com'
 EMAIL_PORT = '587'
 
