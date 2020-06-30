@@ -33,7 +33,7 @@
             </ul>
 
             <!-- Right -->
-            <ul class="navbar-nav nav-flex-icons">
+            <ul class="navbar-nav nav-flex-icons mr-auto">
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a href="{% url 'core:order-summary' %}" class="nav-link waves-effect">
