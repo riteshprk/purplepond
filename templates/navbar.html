@@ -33,7 +33,7 @@
             </ul>
 
             <!-- Right -->
-            <ul class="navbar-nav nav-flex-icons mr-auto">
+            <ul class="navbar-nav nav-flex-icons">
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a href="{% url 'core:order-summary' %}" class="nav-link waves-effect">
@@ -50,12 +50,12 @@
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link waves-effect" href="{% url 'account_login'%}">
-                        <span class="clearfix d-none d-sm-inline-block"> Login </span>
+                        <span class="clearfix d-none d-sm-block"> Login </span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link waves-effect" href="{% url 'account_signup'%}">
-                        <span class="clearfix d-none d-sm-inline-block"> SignUp </span>
+                        <span class="clearfix d-none d-sm-block"> SignUp </span>
                     </a>
                 </li>
                 {% endif %}
