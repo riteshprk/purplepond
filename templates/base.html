@@ -6,8 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  {% block extra_scripts %}
-  {% endblock extra_scripts %}
     <title>{% block head_title %}{% endblock head_title %}</title>
     {% block extra_head %}
     {% endblock extra_head%}
@@ -26,13 +24,7 @@
     .carousel {
       height: 100vh;
     }
-    .navbar-nav > li > a {
-    line-height: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: black;
-    }
-
+  
     @media (max-width: 740px) {
 
       html,
@@ -41,12 +33,6 @@
       .carousel {
         height: 100vh;
       }
-      .navbar-nav > li > a {
-    line-height: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: black;
-    }
     }
 
     @media (min-width: 200px) and (max-width: 850px) {
@@ -55,14 +41,9 @@
       body,
       header,
       .carousel {
-        height: 200vh;
+        height: 100vh;
       }
-      .navbar-nav > li > a {
-    line-height: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: black;
-    }
+
     }
 
   </style>
@@ -90,8 +71,11 @@
     {% endblock %}
 
     {% include "footer.html" %}
-
+  
   {% include "scripts.html" %}
+  
+  {% block extra_scripts %}
+  {% endblock extra_scripts %}
 
 </body>
 </html>
