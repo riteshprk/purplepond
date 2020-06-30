@@ -6,8 +6,8 @@ from django.shortcuts import reverse
 from django_countries.fields import CountryField
 # Create your models here.
 CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'Sport Wear'),
+    ('S', 'T-Shirt'),
+    ('SW', 'Hoodies'),
     ('O', 'Outwear')
 )
 
