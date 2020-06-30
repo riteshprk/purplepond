@@ -32,11 +32,11 @@
               
                {% if object.discount_price %}
                <span class="mr-1">
-               <del>${{object.price}}</del>
+               <del>£{{object.price}}</del>
                </span>
-               <span>{{object.discount_price}}</span>
+               <span>£{{object.discount_price}}</span>
                {% else %}
-                  <span>{{object.price}}</span>
+                  <span>£{{object.price}}</span>
                   {% endif %}
             </p>
 
