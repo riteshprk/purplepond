@@ -1,6 +1,7 @@
 from django.db.models.signals import post_save
 from django.conf import settings
 from django.db import models
+from cloudinary.models import CloudinaryField
 from django.db.models import Sum
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
@@ -41,7 +42,17 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
-    image = models.ImageField()
+    #image = models.ImageField()
+        ## Points to a Cloudinary image
+    image = CloudinaryField('image')
+
+    """ Informative name for model """
+    def __unicode__(self):
+        try:
+            public_id = self.image.public_id
+        except AttributeError:
+            public_id = ''
+        return "Item <%s:%s>" % (self.title, public_id)
 
     def __str__(self):
         return self.title
