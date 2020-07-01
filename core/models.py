@@ -8,8 +8,8 @@ from django_countries.fields import CountryField
 # Create your models here.
 CATEGORY_CHOICES = (
     ('S', 'T-Shirt'),
-    ('SW', 'Hoodies'),
-    ('O', 'Outwear')
+    ('SW', 'Polo Shirt'),
+    ('O', 'Hoodies')
 )
 
 LABEL_CHOICES = (
@@ -22,6 +22,17 @@ ADDRESS_CHOICES = (
     ('B', 'Billing'),
     ('S', 'Shipping'),
 )
+
+SIZE_CHOICES = (
+    ('XS', 'XS(36)'),
+    ('S', 'S(38)'),
+    ('M', 'M(40)'),
+    ('L', 'L(42)'),
+    ('XL', 'XL(44)'),
+    ('XXL', 'XXL(46)'),
+    ('XXXL', 'XXXL(48)'),
+)
+
 
 
 class UserProfile(models.Model):
@@ -79,6 +90,7 @@ class OrderItem(models.Model):
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
+    size = models.CharField(choices=SIZE_CHOICES, max_length=4)
 
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"
