@@ -51,6 +51,7 @@ class Item(models.Model):
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
+    size = models.CharField(choices=SIZE_CHOICES, max_length=4)
     slug = models.SlugField()
     description = models.TextField()
     #image = models.ImageField()
@@ -90,7 +91,7 @@ class OrderItem(models.Model):
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    size = models.CharField(choices=SIZE_CHOICES, max_length=4)
+    
 
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"
