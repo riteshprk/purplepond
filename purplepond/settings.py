@@ -1,5 +1,7 @@
 import django_heroku
 import os
+import cloudinary
+import cloudinary.api
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
@@ -24,6 +26,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'cloudinary',
 ]
 
 SITE_ID = 2
