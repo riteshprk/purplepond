@@ -1,7 +1,6 @@
 import django_heroku
 import os
 import cloudinary
-import cloudinary.api
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
