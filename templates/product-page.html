@@ -47,17 +47,66 @@
               {% for value in object.size %}
               <div>{{value}}</div>
               {% endfor %}
+
+              <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+                {% for variant in product.variants %}
+                {% if variant.available %}
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                  value="{{ variant.id }}">
+                  {{ variant.title }}
+                </option>
+                {% else %}
+                <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
               <div class="col-md-6 select-outline">
+                {% for item_size in object.size %}
                 <select class="form-control border colorful-select dropdown-primary"
                   style="width: auto !important; display: inline-block;" name="sort" id="sort">
                   <option value="" disabled selected>Choose Size</option>
-                  <option value="XS">XS(36)</option>
-                  <option value="S">S(38)</option>
-                  <option value="M">M(40)</option>
-                  <option value="L">L(42)</option>
-                  <option value="XL">XL(44)</option>
-                  <option value="XXL">XXL(46)</option>
-                  <option value="XXXL">XXXL(48)</option>
+                  <option {% if 'XS' in object.size %} selected="selected" {% endif %} value="XS">
+                    XS(36)
+                  </option>
+                  {% else %}
+                  <option disabled="disabled"> XS(36)-Sold Out</option>
+                  {% endif %}
+                  <option {% if 'S' in object.size %} selected="selected" {% endif %} value="S">
+                    S(38)
+                  </option>
+                  {% else %}
+                  <option disabled="disabled"> S(38)-Sold Out</option>
+                  {% endif %}
+                  <option {% if 'M' in object.size %} selected="selected" {% endif %} value="M">
+                    M(40)
+                  </option>
+                  {% else %}
+                  <option disabled="disabled"> M(40)-Sold Out</option>
+                  {% endif %}
+                  <option {% if 'L' in object.size %} selected="selected" {% endif %} value="L">
+                    L(42)
+                  </option>
+                  {% else %}
+                  <option disabled="disabled"> L(42)-Sold Out</option>
+                  {% endif %}
+                  <option {% if 'XL' in object.size %} selected="selected" {% endif %} value="XL">
+                    XL(44)
+                  </option>
+                  {% else %}
+                  <option disabled="disabled"> XL(44)-Sold Out</option>
+                  {% endif %}
+                  <option {% if 'XXL' in object.size %} selected="selected" {% endif %} value="XXL">
+                    XXL(46)
+                  </option>
+                  {% else %}
+                  <option disabled="disabled"> XXL(46)-Sold Out</option>
+                  {% endif %}
+                  <option {% if 'XXXL' in object.size %} selected="selected" {% endif %} value="XXXL">
+                    XXXL(48)
+                  </option>
+                  {% else %}
+                  <option disabled="disabled"> XXXL(48)-Sold Out</option>
+                  {% endif %}
                 </select>
                 <strong><label class="ml-2" for="sort">Size</label></strong>
               </div>
