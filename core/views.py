@@ -21,8 +21,9 @@ import random
 import string
 import stripe
 
-stripe.api_key = os.getenv('STRIPE_SECRET_KEY')      #settings.STRIPE_SECRET_KEY
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')  # settings.STRIPE_SECRET_KEY
 print(stripe.api_key)
+
 
 def create_ref_code():
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
@@ -384,12 +385,12 @@ class PaymentView(View):
 def add_to_cart(request, slug):
     form = ProductForm(request.POST or None)
     if form.is_valid():
-        get_size = form.cleaned_data.get('item_size')
+        get_size = form.cleaned_data['item_size']
     item = get_object_or_404(Item, slug=slug)
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
-        ordered_size = get_size,
+        ordered_size=get_size,
         ordered=False
     )
     order_qs = Order.objects.filter(user=request.user, ordered=False)
