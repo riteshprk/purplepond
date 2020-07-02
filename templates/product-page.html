@@ -51,47 +51,53 @@
 
               </select>
               <div class="col-md-6 select-outline">
-                {% for item_size in object.size %}
                 <select class="form-control border colorful-select dropdown-primary"
                   style="width: auto !important; display: inline-block;" name="sort" id="sort">
                   <option value="" disabled selected>Choose Size</option>
-                  <option {% if 'XS' in object.size %} selected="selected" {% endif %} value="XS">
+                  {% if 'XS' in object.size %}
+                  <option selected="selected" value="XS">
                     XS(36)
                   </option>
                   {% else %}
                   <option disabled="disabled"> XS(36)-Sold Out</option>
                   {% endif %}
-                  <option {% if 'S' in object.size %} selected="selected" {% endif %} value="S">
+                  {% if 'S' in object.size %}
+                  <option selected="selected" value="S">
                     S(38)
                   </option>
                   {% else %}
                   <option disabled="disabled"> S(38)-Sold Out</option>
                   {% endif %}
-                  <option {% if 'M' in object.size %} selected="selected" {% endif %} value="M">
+                  {% if 'M' in object.size %}
+                  <option selected="selected" value="M">
                     M(40)
                   </option>
                   {% else %}
                   <option disabled="disabled"> M(40)-Sold Out</option>
                   {% endif %}
-                  <option {% if 'L' in object.size %} selected="selected" {% endif %} value="L">
+                  {% if 'L' in object.size %}
+                  <option selected="selected" value="L">
                     L(42)
                   </option>
                   {% else %}
                   <option disabled="disabled"> L(42)-Sold Out</option>
                   {% endif %}
-                  <option {% if 'XL' in object.size %} selected="selected" {% endif %} value="XL">
+                  {% if 'XL' in object.size %}
+                  <option selected="selected" value="XL">
                     XL(44)
                   </option>
                   {% else %}
                   <option disabled="disabled"> XL(44)-Sold Out</option>
                   {% endif %}
-                  <option {% if 'XXL' in object.size %} selected="selected" {% endif %} value="XXL">
+                  {% if 'XXL' in object.size %}
+                  <option selected="selected" value="XXL">
                     XXL(46)
                   </option>
                   {% else %}
                   <option disabled="disabled"> XXL(46)-Sold Out</option>
                   {% endif %}
-                  <option {% if 'XXXL' in object.size %} selected="selected" {% endif %} value="XXXL">
+                  {% if 'XXXL' in object.size %}
+                  <option selected="selected" value="XXXL">
                     XXXL(48)
                   </option>
                   {% else %}
