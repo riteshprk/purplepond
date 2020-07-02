@@ -55,7 +55,7 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
-    size = MultiSelectField(choices=SIZE_CHOICES, max_length=20)
+    size = MultiSelectField(choices=SIZE_CHOICES, max_choices=3, max_length=3)
  
     #image = models.ImageField()
         ## Points to a Cloudinary image
