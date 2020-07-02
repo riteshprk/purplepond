@@ -386,7 +386,7 @@ def add_to_cart(request, slug):
     form = ProductForm(request)
 
     if form.is_valid():
-        item_size = form.cleaned_data.get('item_size')
+        item_size = request.form.get("item_size")
         item = get_object_or_404(Item, slug=slug)
         order_item, created = OrderItem.objects.get_or_create(
             item=item,
