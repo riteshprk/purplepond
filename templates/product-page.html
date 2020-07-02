@@ -48,17 +48,7 @@
               <div>{{value}}</div>
               {% endfor %}
 
-              <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
-                {% for variant in product.variants %}
-                {% if variant.available %}
-                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
-                  value="{{ variant.id }}">
-                  {{ variant.title }}
-                </option>
-                {% else %}
-                <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
-                {% endif %}
-                {% endfor %}
+
               </select>
               <div class="col-md-6 select-outline">
                 {% for item_size in object.size %}
