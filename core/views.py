@@ -392,7 +392,7 @@ def add_to_cart(request, slug):
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
-        ordered_size='XXXL',
+        ordered_size=answer,
         ordered=False
     )
     order_qs = Order.objects.filter(user=request.user, ordered=False)
