@@ -414,7 +414,6 @@ def add_to_cart(request, slug):
             order.items.add(order_item)
             messages.info(request, "This item was added to your cart.")
             return redirect("core:order-summary")
-        return redirect("core:order-summary")
 
 
 @login_required
