@@ -44,10 +44,6 @@
             <form method="POST">
               {% csrf_token %}
 
-              {% for value in object.size %}
-              <div>{{value}}</div>
-              {% endfor %}
-
 
               </select>
               <div class="col-md-6 select-outline">
@@ -59,49 +55,49 @@
                     XS(36)
                   </option>
                   {% else %}
-                  <option disabled="disabled"> XS(36) - {{'Sold Out' | t }</option>
+                  <option disabled="disabled"> XS(36) - {{'Sold Out' | t }}</option>
                   {% endif %}
                   {% if 'S' in object.size %}
                   <option selected="selected" value="S">
                     S(38)
                   </option>
                   {% else %}
-                  <option disabled="disabled"> S(38) - {{'Sold Out' | t }</option>
+                  <option disabled="disabled"> S(38) - {{'Sold Out' | t }}</option>
                   {% endif %}
                   {% if 'M' in object.size %}
                   <option selected="selected" value="M">
                     M(40)
                   </option>
                   {% else %}
-                  <option disabled="disabled"> M(40) - {{'Sold Out' | t }</option>
+                  <option disabled="disabled"> M(40) - {{'Sold Out' | t }}</option>
                   {% endif %}
                   {% if 'L' in object.size %}
                   <option selected="selected" value="L">
                     L(42)
                   </option>
                   {% else %}
-                  <option disabled="disabled"> L(42) - {{'Sold Out' | t }</option>
+                  <option disabled="disabled"> L(42) - {{'Sold Out' | t }}</option>
                   {% endif %}
                   {% if 'XL' in object.size %}
                   <option selected="selected" value="XL">
                     XL(44)
                   </option>
                   {% else %}
-                  <option disabled="disabled"> XL(44) - {{'Sold Out' | t }</option>
+                  <option disabled="disabled"> XL(44) - {{'Sold Out' | t }}</option>
                   {% endif %}
                   {% if 'XXL' in object.size %}
                   <option selected="selected" value="XXL">
                     XXL(46)
                   </option>
                   {% else %}
-                  <option disabled="disabled"> XXL(46) - {{'Sold Out' | t }</option>
+                  <option disabled="disabled"> XXL(46) - {{'Sold Out' | t }}</option>
                   {% endif %}
                   {% if 'XXXL' in object.size %}
                   <option selected="selected" value="XXXL">
                     XXXL(48)
                   </option>
                   {% else %}
-                  <option disabled="disabled"> XXXL(48) - {{'Sold Out' | t }</option>
+                  <option disabled="disabled"> XXXL(48) - {{'Sold Out' | t }}</option>
                   {% endif %}
                 </select>
                 <strong><label class="ml-2" for="sort">Size</label></strong>
@@ -114,74 +110,73 @@
           <p>{{object.description}}</p>
 
 
-                    <a href="{{object.get_add_to_cart_url}}" class="btn btn-primary btn-md my-0 p" type="submit"
-                      value="sort">Add
-                      to cart<i class="fas fa-shopping-cart ml-1"></i>
-                    </a>
-                    <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">
-                      Remove from cart
-                    </a>
-            </form>
-          </div>
-          <!--Content-->
-
+          <a href="{{object.get_add_to_cart_url}}" class="btn btn-primary btn-md my-0 p" type="submit" value="sort">Add
+            to cart<i class="fas fa-shopping-cart ml-1"></i>
+          </a>
+          <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">
+            Remove from cart
+          </a>
+          </form>
         </div>
-        <!--Grid column-->
+        <!--Content-->
 
       </div>
-      <!--Grid row-->
-
-      <hr>
-
-      <!--Grid row-->
-      {% comment %} <div class="row d-flex justify-content-center wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-md-6 text-center">
-
-          <h4 class="my-4 h4">Additional information</h4>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-            voluptates,
-            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-12 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-      </div> {% endcomment %}
-      <!--Grid row-->
+      <!--Grid column-->
 
     </div>
+    <!--Grid row-->
+
+    <hr>
+
+    <!--Grid row-->
+    {% comment %} <div class="row d-flex justify-content-center wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-6 text-center">
+
+        <h4 class="my-4 h4">Additional information</h4>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
+          voluptates,
+          quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4">
+
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-6 mb-4">
+
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-6 mb-4">
+
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
+
+      </div>
+      <!--Grid column-->
+
+    </div> {% endcomment %}
+    <!--Grid row-->
+
+  </div>
 </main>
 <!--Main layout-->
 {% endblock %}
