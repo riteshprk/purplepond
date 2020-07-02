@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'cloudinary',
+    'multiselectfield',
 ]
 
 SITE_ID = 2

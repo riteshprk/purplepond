@@ -27,3 +27,4 @@ pytz==2020.1
 sqlparse==0.3.1
 whitenoise==5.1.0
 cloudinary==1.21.1
+django-multiselectfield==0.1.12
