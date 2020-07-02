@@ -383,37 +383,35 @@ class PaymentView(View):
 
 @login_required
 def add_to_cart(request, slug):
-    form = ProductForm(request)
 
-    if form.is_valid():
-        item_size = form.cleaned_data.get('item_size')
-        item = get_object_or_404(Item, slug=slug)
-        order_item, created = OrderItem.objects.get_or_create(
-            item=item,
-            user=request.user,
-            ordered_size=item_size,
-            ordered=False
-        )
-        order_qs = Order.objects.filter(user=request.user, ordered=False)
-        if order_qs.exists():
-            order = order_qs[0]
-            # check if order item is in the order
-            if order.items.filter(item__slug=item.slug).exists():
-                order_item.quantity += 1
-                order_item.save()
-                messages.info(request, "This item quantity was updated.")
-                return redirect("core:order-summary")
-            else:
-                order.items.add(order_item)
-                messages.info(request, "This item was added to your cart.")
-                return redirect("core:order-summary")
+    item_size = request.form.get("item_size")
+    item = get_object_or_404(Item, slug=slug)
+    order_item, created = OrderItem.objects.get_or_create(
+        item=item,
+        user=request.user,
+        ordered_size=item_size,
+        ordered=False
+    )
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+    if order_qs.exists():
+        order = order_qs[0]
+        # check if order item is in the order
+        if order.items.filter(item__slug=item.slug).exists():
+            order_item.quantity += 1
+            order_item.save()
+            messages.info(request, "This item quantity was updated.")
+            return redirect("core:order-summary")
         else:
-            order_date = timezone.now()
-            order = Order.objects.create(
-                user=request.user, order_date=order_date)
             order.items.add(order_item)
             messages.info(request, "This item was added to your cart.")
             return redirect("core:order-summary")
+    else:
+        order_date = timezone.now()
+        order = Order.objects.create(
+            user=request.user, order_date=order_date)
+        order.items.add(order_item)
+        messages.info(request, "This item was added to your cart.")
+        return redirect("core:order-summary")
 
 
 @login_required
