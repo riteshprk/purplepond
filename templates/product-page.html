@@ -41,9 +41,10 @@
           </p>
           <div class="row">
 
-
-            <div class="col-md-6 select-outline">
-              <select class="form-control border colorful-select dropdown-primary"
+            <form>
+              {% csrf_token %}
+              <div class="col-md-6 select-outline">
+                <!-- <select class="form-control border colorful-select dropdown-primary"
                 style="width: auto !important; display: inline-block;" name="sort" id="sort">
                 <option value="" disabled selected>Choose Size</option>
                 <option value="XS">XS(36)</option>
@@ -54,8 +55,9 @@
                 <option value="XXL">XXL(46)</option>
                 <option value="XXXL">XXXL(48)</option>
               </select>
-              <strong><label class="ml-2" for="sort">Size</label></strong>
-            </div>
+              <strong><label class="ml-2" for="sort">Size</label></strong> -->
+                {{ form.as_p }}
+              </div>
 
           </div>
 
@@ -63,14 +65,14 @@
 
           <p>{{object.description}}</p>
 
-          {% comment %} <form class="d-flex justify-content-left">
+          <div class="d-flex justify-content-left">
             <!-- Default input -->
             <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
             <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
               <i class="fas fa-shopping-cart ml-1"></i>
             </button>
-
-          </form> {% endcomment %}
+          </div>
+          </form>
           <a href="{{object.get_add_to_cart_url}}" class="btn btn-primary btn-md my-0 p">Add to cart
             <i class="fas fa-shopping-cart ml-1"></i>
           </a>

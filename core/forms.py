@@ -8,6 +8,19 @@ PAYMENT_CHOICES = (
     ('P', 'PayPal')
 )
 
+SIZE_CHOICES = (
+    ('XS', 'XS(36)'),
+    ('S', 'S(38)'),
+    ('M', 'M(40)'),
+    ('L', 'L(42)'),
+    ('XL', 'XL(44)'),
+    ('XXL', 'XXL(46)'),
+    ('XXXL', 'XXXL(48)'),
+)
+
+class ProductForm(forms.Form): 
+    size_choices = forms.MultipleChoiceField(choices = SIZE_CHOICES)
+
 
 class CheckoutForm(forms.Form):
     shipping_address = forms.CharField(required=False)

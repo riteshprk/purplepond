@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
-from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
+from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm, ProductForm
 from .models import (Item,
                      OrderItem,
                      Order,
@@ -386,6 +386,7 @@ def add_to_cart(request, slug):
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
+        size = ProductForm()
         ordered=False
     )
     order_qs = Order.objects.filter(user=request.user, ordered=False)
