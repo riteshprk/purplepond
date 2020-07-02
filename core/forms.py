@@ -8,18 +8,17 @@ PAYMENT_CHOICES = (
     ('P', 'PayPal')
 )
 
-SIZE_CHOICES = (
-    ('XS', 'XS(36)'),
-    ('S', 'S(38)'),
-    ('M', 'M(40)'),
-    ('L', 'L(42)'),
-    ('XL', 'XL(44)'),
-    ('XXL', 'XXL(46)'),
-    ('XXXL', 'XXXL(48)'),
-)
-
 
 class ProductForm(forms.Form):
+    SIZE_CHOICES = (
+        ('XS', 'XS(36)'),
+        ('S', 'S(38)'),
+        ('M', 'M(40)'),
+        ('L', 'L(42)'),
+        ('XL', 'XL(44)'),
+        ('XXL', 'XXL(46)'),
+        ('XXXL', 'XXXL(48)'),
+    )
     item_size = forms.Select(choices=SIZE_CHOICES)
 
 
