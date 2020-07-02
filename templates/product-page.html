@@ -43,6 +43,13 @@
 
             <form method="POST">
               {% csrf_token %}
+              {% for value, text in form.providers.field.choices %}
+              <div class="ui slider checkbox">
+                <input id="id_providers_{{ forloop.counter0 }}" name="{{ form.providers.name }}" type="checkbox"
+                  value="{{ value }}" {% if value in checked_providers %} checked="checked" {% endif %}>
+                <label>{{ text }}</label>
+              </div>
+              {% endfor %}
               <div class="col-md-6 select-outline">
                 <select class="form-control border colorful-select dropdown-primary"
                   style="width: auto !important; display: inline-block;" name="sort" id="sort">
