@@ -5,6 +5,7 @@ from cloudinary.models import CloudinaryField
 from django.db.models import Sum
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
+from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 CATEGORY_CHOICES = (
     ('S', 'T-Shirt'),
@@ -53,6 +54,11 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
+    size = ArrayField(
+        models.CharField(max_length=4, blank=True, choices=SIZE_CHOICES),
+        default=list,
+        blank=True,
+        )
     #image = models.ImageField()
         ## Points to a Cloudinary image
     image = CloudinaryField('image')
