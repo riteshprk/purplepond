@@ -36,7 +36,6 @@ SIZE_CHOICES = (
 )
 
 
-
 class UserProfile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -56,12 +55,13 @@ class Item(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     size = MultiSelectField(choices=SIZE_CHOICES)
- 
+
     #image = models.ImageField()
-        ## Points to a Cloudinary image
+    # Points to a Cloudinary image
     image = CloudinaryField('image')
 
     """ Informative name for model """
+
     def __unicode__(self):
         try:
             public_id = self.image.public_id
@@ -94,7 +94,7 @@ class OrderItem(models.Model):
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    ordered_size = models.CharField()
+    ordered_size = models.CharField(max_length=6)
 
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"
