@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load cloudinary %}
+{% load crispy_forms_tags %}
 <!--Main layout-->
 <main class="mt-5 pt-4">
   <div class="container dark-grey-text mt-5">
@@ -43,7 +44,7 @@
 
             <form action="." method="POST">
               {% csrf_token %}
-              {{form.as_p}}
+              {% crispy form %}
               <div class="col-md-6 select-outline">
                 <select class="form-control border colorful-select dropdown-primary"
                   style="width: auto !important; display: inline-block;" name="item_size" id="item_size">
