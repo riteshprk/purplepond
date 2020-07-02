@@ -55,8 +55,8 @@ class Item(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     size = ArrayField(
-        models.CharField(max_length=4, blank=True, choices=SIZE_CHOICES),
-        default=list,
+        models.CharField(max_length=10, blank=True, choices=SIZE_CHOICES),
+        default=SIZE_CHOICES[0][0],
         blank=True,
         )
     #image = models.ImageField()
