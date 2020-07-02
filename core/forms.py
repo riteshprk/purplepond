@@ -18,8 +18,9 @@ SIZE_CHOICES = (
     ('XXXL', 'XXXL(48)'),
 )
 
-class ProductForm(forms.Form): 
-    item_size = forms.ChoiceField()
+
+class ProductForm(forms.Form):
+    item_size = forms.Select()
 
 
 class CheckoutForm(forms.Form):
