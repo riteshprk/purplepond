@@ -386,7 +386,7 @@ def add_to_cart(request, slug):
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
-        size = ProductForm(request.POST),
+        ordered_size = form.cleaned_data.get('item_size')
         ordered=False
     )
     order_qs = Order.objects.filter(user=request.user, ordered=False)
