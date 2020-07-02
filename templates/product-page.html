@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load cloudinary %}
+{% load crispy_forms_tags %}
+{% crispy PaymentForm %}
 <!--Main layout-->
 <main class="mt-5 pt-4">
   <div class="container dark-grey-text mt-5">
@@ -43,7 +45,8 @@
 
             <form>
               {% csrf_token %}
-              <div class="col-md-6 select-outline">
+              {{form|crispy}}
+              <!-- <div class="col-md-6 select-outline">
                 <select class="form-control border colorful-select dropdown-primary"
                   style="width: auto !important; display: inline-block;" name="item_size" id="item_size">
                   <option value="" disabled selected>Choose Size</option>
@@ -84,7 +87,7 @@
                   {% endif %}
                 </select>
                 <strong><label class="ml-2" for="item_size">Size</label></strong>
-              </div>
+              </div> -->
 
           </div>
 

@@ -20,7 +20,7 @@ SIZE_CHOICES = (
 
 
 class ProductForm(forms.Form):
-    item_size = forms.Select()
+    item_size = forms.Select(choices=SIZE_CHOICES)
 
 
 class CheckoutForm(forms.Form):
