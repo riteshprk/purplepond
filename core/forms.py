@@ -19,7 +19,7 @@ SIZE_CHOICES = (
 )
 
 class ProductForm(forms.Form): 
-    size_choices = forms.MultipleChoiceField(choices = SIZE_CHOICES)
+    item_size = forms.ChoiceField()
 
 
 class CheckoutForm(forms.Form):
