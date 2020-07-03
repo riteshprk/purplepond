@@ -393,7 +393,8 @@ def add_to_cart(request, slug):
 
     answer = 'nn'
     if form.is_valid():
-        answer = form.cleaned_data['item_size']
+        answer = form.cleaned_data.get('id_item_size')
+    print(form.is_valid())
     print(answer)
     #item_size = request.GET["item_size"]
     item = get_object_or_404(Item, slug=slug)
