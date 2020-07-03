@@ -42,7 +42,7 @@
           <div class="row">
             <form method="POST" novalidate>
               {% csrf_token %}
-              {{PaymentForm}}
+              {{form}}
             </form>
 
             <form action="add_to_cart/<slug>" method="POST">
