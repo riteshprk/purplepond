@@ -64,11 +64,8 @@ class OrderSummaryView(LoginRequiredMixin, View):
 
 
 class ItemDetailView(DetailView):
-
-    context = {
-        'form': ProductForm(),
-        'model': Item,
-    }
+    model = Item
+    form = ProductForm
     template_name = "product-page.html"
 
 
