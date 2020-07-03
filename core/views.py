@@ -78,6 +78,7 @@ class ItemDetailView(DetailView):
         if form.is_valid():
             try:
                 get_size = form.cleaned_data.get('item_size')
+                print(get_size)
                 messages.success(self.request, get_size)
                 return redirect("core:checkout")
             except ObjectDoesNotExist:
