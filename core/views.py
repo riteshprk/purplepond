@@ -65,6 +65,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
 
 class ItemDetailView(DetailView):
     model = Item
+    form = PaymentForm()
     template_name = "product-page.html"
 
 
