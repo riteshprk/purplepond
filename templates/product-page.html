@@ -40,14 +40,11 @@
             {% endif %}
           </p>
           <div class="row">
-            <form method="POST" novalidate>
-              {% csrf_token %}
-              {{form}}
-            </form>
 
             <form action="add_to_cart/<slug>" method="POST">
               {% csrf_token %}
-              <div class="col-md-6 select-outline">
+              {{form}}
+              <!-- <div class="col-md-6 select-outline">
                 <select class="form-control border colorful-select dropdown-primary"
                   style="width: auto !important; display: inline-block;" name="item_size" id="item_size">
                   <option value="" disabled selected>Choose Size</option>
@@ -88,7 +85,7 @@
                   {% endif %}
                 </select>
                 <strong><label class="ml-2" for="item_size">Size</label></strong>
-              </div>
+              </div> -->
 
           </div>
 
