@@ -65,10 +65,12 @@ class OrderSummaryView(LoginRequiredMixin, View):
 
 class ItemDetailView(DetailView):
     def get(self, *args, **kwargs):
-        model = Item
-        form = ProductForm()
+        context = {
+            'form': ProductForm(),
+            'model': Item,
+        }
         template_name = "product-page.html"
-        return render(self.request, template_name, {'form': form})
+        return render(self.request, template_name, context)
 
 
 class CheckoutView(View):
