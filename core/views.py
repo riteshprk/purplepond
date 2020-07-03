@@ -389,7 +389,7 @@ class PaymentView(View):
 
 @login_required
 def add_to_cart(request, slug):
-    form = ProductForm(request.POST or None)
+    form = ProductForm(request.POST)
 
     answer = 'nn'
     if form.is_valid():
