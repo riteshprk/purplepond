@@ -391,7 +391,7 @@ class PaymentView(View):
 def add_to_cart(request, slug):
     form = ProductForm(request.POST)
     if form.is_valid():
-        answer = form.cleaned_data.get('id_item_size')
+        answer = form.cleaned_data.get('item_size')
     print(form.is_valid())
     print(answer)
     #item_size = request.GET["item_size"]
