@@ -390,10 +390,11 @@ class PaymentView(View):
 @login_required
 def add_to_cart(request, slug):
     form = ProductForm(request.POST or None)
-    print(form)
-    answer = ''
+
+    answer = 'nn'
     if form.is_valid():
         answer = form.cleaned_data['item_size']
+    print(answer)
     #item_size = request.GET["item_size"]
     item = get_object_or_404(Item, slug=slug)
     order_item, created = OrderItem.objects.get_or_create(
