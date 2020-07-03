@@ -41,7 +41,7 @@
           </p>
           <div class="row">
 
-            <form action="." method="post">
+            <form action="{{object.get_add_to_cart_url}}" method="post">
               {% csrf_token %}
               <!-- {{form}} -->
               <!-- <div class="col-md-6 select-outline">
@@ -113,12 +113,13 @@
                 {% endfor %}
               </select>
               <strong><label class="ml-2" for="item_size">Size</label></strong>
-              <button href="{{object.get_add_to_cart_url}}" class="btn btn-primary" type="submit">Add to Cart</button>
+              <button class="btn btn-primary" type="submit">Add to Cart</button>
+              <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger">
+                Remove from cart
+              </a>
             </form>
 
-            <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger">
-              Remove from cart
-            </a>
+
             <p class="lead font-weight-bold mt-2">Description</p>
 
             <p>{{object.description}}</p>
