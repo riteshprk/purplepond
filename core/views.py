@@ -67,7 +67,7 @@ class ItemDetailView(DetailView):
     model = Item
 
     def get(self, *args, **kwargs):
-        form = PaymentForm()
+        form = ProductForm()
         template_name = "product-page.html"
         return render(self.request, template_name, {'form': form})
 
