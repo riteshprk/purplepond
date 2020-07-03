@@ -72,6 +72,17 @@ class ItemDetailView(DetailView):
         form = ProductForm()
         context['form'] = form
         return context
+    # def post():
+    #     form = ProductForm(request.POST or None)
+    #     if form.is_valid():
+    #         try:
+    #             get_size = form.cleaned_data.get('item_size')
+    #             print(get_size)
+    #             messages.success(self.request, get_size)
+    #             return redirect("core:checkout")
+    #         except ObjectDoesNotExist:
+    #             messages.info(self.request, "You do not have an active order")
+    #             return redirect("core:checkout")
 
 
 class CheckoutView(View):
@@ -389,23 +400,17 @@ class PaymentView(View):
 
 @login_required
 def add_to_cart(request, slug):
-    def post():
-        form = ProductForm(request.POST or None)
-        if form.is_valid():
-            try:
-                get_size = form.cleaned_data.get('item_size')
-                print(get_size)
-                messages.success(self.request, get_size)
-                return redirect("core:checkout")
-            except ObjectDoesNotExist:
-                messages.info(self.request, "You do not have an active order")
-                return redirect("core:checkout")
-
+    form = ProductForm(request.POST or None)
+    get_size = ''
+    if form.is_valid():
+        get_size = form.cleaned_data.get('item_size')
     item = get_object_or_404(Item, slug=slug)
+    print(form.is_valid())
+    print(get_size)
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
-        ordered_size='XXL',
+        ordered_size=get_size,
         ordered=False
     )
     order_qs = Order.objects.filter(user=request.user, ordered=False)
