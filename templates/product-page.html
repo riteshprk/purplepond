@@ -43,7 +43,7 @@
 
             <form action="{{object.get_add_to_cart_url}}" method="post">
               {% csrf_token %}
-              <!-- {{form}} -->
+              {{form}}
               <!-- <div class="col-md-6 select-outline">
                 <select class="form-control border colorful-select dropdown-primary"
                   style="width: auto !important; display: inline-block;" name="item_size" id="item_size">
@@ -97,8 +97,8 @@
               <!-- <a href="{{object.get_add_to_cart_url}}" class="btn btn-primary btn-md my-0 p" type="submit">Add
                 to cart<i class="fas fa-shopping-cart ml-1"></i>
               </a> -->
-              <input type="text" name="item_size" id="item_size">
-              <button class="btn btn-primary" type="submit"></button>
+              <!-- <input type="text" name="item_size" id="item_size"> -->
+              <button class="btn btn-primary" type="submit">Add to Cart</button>
 
             </form>
             <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">
