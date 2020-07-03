@@ -19,7 +19,8 @@ class ProductForm(forms.Form):
         ('XXL', 'XXL(46)'),
         ('XXXL', 'XXXL(48)'),
     )
-    item_size = forms.ChoiceField(choices=SIZE_CHOICES)
+    item_size = forms.ChoiceField(
+        widget=forms.RadioSelect, choices=SIZE_CHOICES)
 
 
 class CheckoutForm(forms.Form):
