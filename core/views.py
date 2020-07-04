@@ -55,7 +55,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
         try:
             orders = Order.objects.get(user=self.request.user, ordered=False)
             context = {
-                'object': [order for order in orders]
+                'object': orders
             }
             return render(self.request, 'order_summary.html', context)
         except ObjectDoesNotExist:
