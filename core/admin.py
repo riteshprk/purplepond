@@ -13,7 +13,7 @@ make_refund_accepted.short_description = 'Update orders to refund granted'
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['user',
                     'ordered',
-                    'OrderItem.ordered_size',
+                    'size',
                     'being_delivered',
                     'received',
                     'refund_requested',
@@ -23,6 +23,7 @@ class OrderAdmin(admin.ModelAdmin):
                     'payment',
                     'coupon'
                     ]
+
     list_display_links = ['user',
                           'shipping_address',
                           'billing_address',
@@ -43,6 +44,9 @@ class OrderAdmin(admin.ModelAdmin):
         'ref_code'
     ]
     actions = [make_refund_accepted]
+
+    def size(self, obj):
+        return "\n".join([a.ordered_size for a in obj.items.all()])
 
 
 class AddressAdmin(admin.ModelAdmin):
