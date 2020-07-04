@@ -18,8 +18,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for order in object.order.all %}
-                    {% for order_item in order.items.all %}
+                    {% for a in order %}
+                    {% for order_item in a.items.all %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ order_item.item.title }}</td>
