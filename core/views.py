@@ -467,6 +467,7 @@ def add_single_item_to_cart(request, slug, size):
     #item = get_object_or_404(Item, slug=slug)
     order = OrderItem.objects.filter(
         user=request.user,
+        item__slug=slug,
         ordered_size=size,
         ordered=False
     )
@@ -488,6 +489,7 @@ def remove_single_item_from_cart(request, slug, size):
     #item = get_object_or_404(Item, slug=slug)
     order = OrderItem.objects.filter(
         user=request.user,
+        item__slug=slug,
         ordered_size=size,
         ordered=False
     )
