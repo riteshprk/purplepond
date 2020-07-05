@@ -504,6 +504,8 @@ def remove_single_item_from_cart(request, slug, size):
         if order.quantity > 1:
             order.quantity -= 1
             order.save()
+            messages.info(request, "This item quantity was updated.")
+            return redirect("core:order-summary")
         else:
             order.delete()
             messages.info(request, "This item quantity was updated.")
