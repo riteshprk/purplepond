@@ -412,27 +412,16 @@ def add_to_cart(request, slug):
         ordered_size=get_size,
         ordered=False
     )
-    order_qs = Order.objects.filter(
-        user=request.user, items__ordered_size=get_size, ordered=False)
-    if order_qs.exists():
-        order = order_qs[0]
-        # check if order item is in the order
-        if order.items.filter(item__slug=item.slug).exists():
-            order_item.quantity += 1
-            order_item.save()
-            messages.info(request, "This item quantity was updated.")
-            return redirect("core:product", slug=slug)
-        else:
-            order.items.add(order_item)
-            messages.info(request, "This item was added to your cart.")
-            return redirect("core:product", slug=slug)
+    order = OrderItem.objects.filter(
+        user=request.user, item__slug=slug, ordered_size=get_size, ordered=False)[0]
+    if order:
+        order.quantity += 1
+        order.save()
+        messages.info(request, "This item quantity was updated.")
+        return redirect("core:product", slug=slug)
     else:
-        order_date = timezone.now()
-        order = Order.objects.create(
-            user=request.user, order_date=order_date)
-        order.items.add(order_item)
         messages.info(request, "This item was added to your cart.")
-        return redirect("core:order-summary")
+        return redirect("core:product", slug=slug)
 
 
 @login_required
