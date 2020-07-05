@@ -66,7 +66,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
 
 
 class ItemDetailView(DetailView):
-    model = Item, OrderItem
+    model = OrderItem
     template_name = "product-page.html"
 
     def get_context_data(self, **kwargs):
