@@ -484,7 +484,7 @@ def remove_single_item_from_cart(request, slug, size):
             order.quantity -= 1
             order.save()
         else:
-            order.item.remove(order)
+            order.remove()
             messages.info(request, "This item quantity was updated.")
             return redirect("core:order-summary")
     else:
