@@ -401,7 +401,7 @@ class PaymentView(View):
 
 
 @login_required
-def add_to_cart(request, slug):
+def add_to_cart(request, slug, size):
     form = ProductForm(request.POST or None)
     if form.is_valid():
         get_size = form.cleaned_data.get('item_size')
@@ -469,14 +469,11 @@ def remove_from_cart(request, slug):
 
 
 @login_required
-def remove_single_item_from_cart(request, slug):
-    form = ProductForm(request.POST or None)
-    if form.is_valid():
-        get_size = form.cleaned_data.get('item_size')
+def remove_single_item_from_cart(request, slug, size):
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(
         user=request.user,
-        items__ordered_size=get_size,
+        items__ordered_size=size,
         ordered=False
     )
     if order_qs.exists():
@@ -486,7 +483,7 @@ def remove_single_item_from_cart(request, slug):
             order_item = OrderItem.objects.filter(
                 item=item,
                 user=request.user,
-                ordered_size=get_size,
+                ordered_size=size,
                 ordered=False
             )[0]
             if order_item.quantity > 1:
