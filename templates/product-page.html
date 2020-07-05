@@ -11,7 +11,7 @@
       <!--Grid column-->
       <div class="col-md-6 mb-4">
 
-        <img src="{{item.items.image.url}}" class="img-fluid" alt="">
+        <img src="{{item.item.image.url}}" class="img-fluid" alt="">
 
       </div>
       <!--Grid column-->
@@ -23,20 +23,20 @@
         <div class="p-4">
 
           <div class="mb-3">
-            <a href="{{item.items.get_absolute_url}}">
-              <span class="badge purple mr-1">{{object.items.get_category_display}}</span>
+            <a href="{{item.item.get_absolute_url}}">
+              <span class="badge purple mr-1">{{object.item.get_category_display}}</span>
             </a>
           </div>
 
           <p class="lead">
 
-            {% if object.items.discount_price %}
+            {% if object.item.discount_price %}
             <span class="mr-1">
-              <del>£{{object.items.price}}</del>
+              <del>£{{object.item.price}}</del>
             </span>
-            <span>£{{object.items.discount_price}}</span>
+            <span>£{{object.item.discount_price}}</span>
             {% else %}
-            <span>£{{object.items.price}}</span>
+            <span>£{{object.item.price}}</span>
             {% endif %}
           </p>
           <div class="row">
