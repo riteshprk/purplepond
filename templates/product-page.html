@@ -3,9 +3,12 @@
 {% load cloudinary %}
 <!--Main layout-->
 <main class="mt-5 pt-4">
-  <a>{{item}}</a>
-  <a>{{object}}</a>
-  <a>{{get_item}}</a>
+  <div>{{item.get_category_display}}</div>
+  <div>{{object.get_category_display}}</div>
+  {% for ite in get_item %}
+  <div>{{ite}}</div>
+  {% endfor %}
+
 </main>
 <!--Main layout-->
 {% endblock %}
