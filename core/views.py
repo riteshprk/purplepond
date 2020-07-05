@@ -436,35 +436,29 @@ def add_to_cart(request, slug):
 
 
 @login_required
-def remove_from_cart(request, slug):
-    form = ProductForm(request.POST or None)
-    if form.is_valid():
-        get_size = form.cleaned_data.get('item_size')
-    item = get_object_or_404(Item, slug=slug)
-    order_qs = Order.objects.filter(
+def remove_from_cart(request, slug, size):
+    order_qs = OrderItem.objects.filter(
         user=request.user,
-        items__ordered_size=get_size,
+        ordered_size=size,
         ordered=False
     )
     if order_qs.exists():
-        order = order_qs[0]
+        #order = order_qs[0]
         # check if the order item is in the order
-        if order.items.filter(item__slug=item.slug).exists():
-            order_item = OrderItem.objects.filter(
-                item=item,
-                user=request.user,
-                ordered_size=get_size,
-                ordered=False
-            )[0]
-            order.items.remove(order_item)
-            order_item.delete()
-            messages.info(request, "This item was removed from your cart.")
-            return redirect("core:order-summary")
-        else:
-            messages.info(request, "This item was not in your cart")
-            return redirect("core:product", slug=slug)
+        # if order.items.filter(item__slug=item.slug).exists():
+        #     order_item = OrderItem.objects.filter(
+        #         item=item,
+        #         user=request.user,
+        #         ordered_size=get_size,
+        #         ordered=False
+        #     )[0]
+        #     order.items.remove(order_item)
+        #     order_item.delete()
+        order_qs.delete()
+        messages.info(request, "This item was removed from your cart.")
+        return redirect("core:order-summary")
     else:
-        messages.info(request, "You do not have an active order")
+        messages.info(request, "This item was not in your cart")
         return redirect("core:product", slug=slug)
 
 

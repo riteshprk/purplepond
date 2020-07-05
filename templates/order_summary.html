@@ -40,7 +40,7 @@
                             {% else %}
                             £{{ order_item.get_total_item_price }}
                             {% endif %}
-                            <a style='color: red;' href="{% url 'core:remove_from_cart' order_item.item.slug %}">
+                            <a style='color: red;' href="{% url 'core:remove_from_cart' order_item.item.slug order_item.ordered_size %}">
                                 <em class="fas fa-trash float-right"></em>
                             </a>
                         </td>
