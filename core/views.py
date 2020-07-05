@@ -54,10 +54,10 @@ class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         try:
 
-            orders = Order.objects.filter(
+            orders_item = OrderItem.objects.filter(
                 user=self.request.user, ordered=False)
             context = {
-                'object': orders
+                'object': orders_item
             }
             return render(self.request, 'order_summary.html', context)
         except ObjectDoesNotExist:
