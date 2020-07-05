@@ -73,8 +73,6 @@ class ItemDetailView(DetailView):
         context = super(DetailView, self).get_context_data(**kwargs)
         form = ProductForm()
         context['form'] = form
-        context['get_item'] = OrderItem.objects.get(
-            user=self.request.user, ordered=False)
         return context
     # def post():
     #     form = ProductForm(request.POST or None)
