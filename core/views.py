@@ -471,7 +471,7 @@ def add_single_item_to_cart(request, slug, size):
         ordered_size=size,
         ordered=False
     )[0]
-    if order.exists():
+    if order:
         #order = order_qs[0]
         # check if the order item is in the order
 
@@ -493,7 +493,7 @@ def remove_single_item_from_cart(request, slug, size):
         ordered_size=size,
         ordered=False
     )[0]
-    if order.exists():
+    if order:
        # order = order_qs[0]
         # check if the order item is in the order
 
