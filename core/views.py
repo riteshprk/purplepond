@@ -66,13 +66,14 @@ class OrderSummaryView(LoginRequiredMixin, View):
 
 
 class ItemDetailView(DetailView):
-    model = OrderItem
+    model = Item
     template_name = "product-page.html"
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
         form = ProductForm()
         context['form'] = form
+        context['get_item'] = OrderItem.objects.all()
         return context
     # def post():
     #     form = ProductForm(request.POST or None)
