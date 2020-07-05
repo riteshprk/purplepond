@@ -55,7 +55,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
         try:
 
             orders_item = OrderItem.objects.filter(
-                user=self.request.user, ordered=False)
+                user=self.request.user, ordered=False).order_by('pk')
             context = {
                 'object': orders_item
             }
