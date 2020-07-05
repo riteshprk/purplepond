@@ -481,6 +481,7 @@ def add_single_item_to_cart(request, slug, size):
         # check if the order item is in the order
 
         order.quantity += 1
+        order.save()
         messages.info(request, "This item quantity was updated.")
         return redirect("core:order-summary")
     else:
