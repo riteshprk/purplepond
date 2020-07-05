@@ -11,7 +11,7 @@
       <!--Grid column-->
       <div class="col-md-6 mb-4">
 
-        <img src="{{item.image.url}}" class="img-fluid" alt="">
+        <img src="{{item.items.image.url}}" class="img-fluid" alt="">
 
       </div>
       <!--Grid column-->
@@ -23,7 +23,7 @@
         <div class="p-4">
 
           <div class="mb-3">
-            <a href="{{item.get_absolute_url}}">
+            <a href="{{item.items.get_absolute_url}}">
               <span class="badge purple mr-1">{{object.get_category_display}}</span>
             </a>
           </div>
