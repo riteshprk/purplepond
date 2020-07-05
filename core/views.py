@@ -412,16 +412,16 @@ def add_to_cart(request, slug):
         ordered_size=get_size,
         ordered=False
     )
-    order = OrderItem.objects.filter(
-        user=request.user, item__slug=slug, ordered_size=get_size, ordered=False)[0]
-    if order:
-        order.quantity += 1
-        order.save()
-        messages.info(request, "This item quantity was updated.")
-        return redirect("core:product", slug=slug)
-    else:
-        messages.info(request, "This item was added to your cart.")
-        return redirect("core:product", slug=slug)
+    # order = OrderItem.objects.filter(
+    #     user=request.user, item__slug=slug, ordered_size=get_size, ordered=False)[0]
+    # if order:
+    #     order.quantity += 1
+    #     order.save()
+    messages.info(request, "This item quantity was updated.")
+    return redirect("core:product", slug=slug)
+    # else:
+    #     messages.info(request, "This item was added to your cart.")
+    #     return redirect("core:product", slug=slug)
 
 
 @login_required
