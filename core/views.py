@@ -436,11 +436,14 @@ def add_to_cart(request, slug):
 
 
 @login_required
-def remove_from_cart(request, slug, size):
+def remove_from_cart(request, slug):
+    form = ProductForm(request.POST or None)
+    if form.is_valid():
+        get_size = form.cleaned_data.get('item_size')
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(
         user=request.user,
-        items__ordered_size=size,
+        items__ordered_size=get_size,
         ordered=False
     )
     if order_qs.exists():
@@ -450,7 +453,7 @@ def remove_from_cart(request, slug, size):
             order_item = OrderItem.objects.filter(
                 item=item,
                 user=request.user,
-                ordered_size=size,
+                ordered_size=get_size,
                 ordered=False
             )[0]
             order.items.remove(order_item)
@@ -466,11 +469,14 @@ def remove_from_cart(request, slug, size):
 
 
 @login_required
-def remove_single_item_from_cart(request, slug, size):
+def remove_single_item_from_cart(request, slug):
+    form = ProductForm(request.POST or None)
+    if form.is_valid():
+        get_size = form.cleaned_data.get('item_size')
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(
         user=request.user,
-        items__ordered_size=size,
+        items__ordered_size=get_size,
         ordered=False
     )
     if order_qs.exists():
@@ -480,7 +486,7 @@ def remove_single_item_from_cart(request, slug, size):
             order_item = OrderItem.objects.filter(
                 item=item,
                 user=request.user,
-                ordered_size=size,
+                ordered_size=get_size,
                 ordered=False
             )[0]
             if order_item.quantity > 1:
