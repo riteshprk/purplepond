@@ -437,12 +437,13 @@ def add_to_cart(request, slug):
 
 @login_required
 def remove_from_cart(request, slug, size):
-    order_qs = OrderItem.objects.filter(
+    order = OrderItem.objects.filter(
         user=request.user,
+        item__slug=slug,
         ordered_size=size,
         ordered=False
-    )
-    if order_qs.exists():
+    )[0]
+    if order:
         #order = order_qs[0]
         # check if the order item is in the order
         # if order.items.filter(item__slug=item.slug).exists():
@@ -454,7 +455,7 @@ def remove_from_cart(request, slug, size):
         #     )[0]
         #     order.items.remove(order_item)
         #     order_item.delete()
-        order_qs.delete()
+        order.delete()
         messages.info(request, "This item was removed from your cart.")
         return redirect("core:order-summary")
     else:
