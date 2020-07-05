@@ -415,8 +415,8 @@ def add_to_cart(request, slug):
     # order = OrderItem.objects.filter(
     #     user=request.user, item__slug=slug, ordered_size=get_size, ordered=False)[0]
     # if order:
-    #     order.quantity += 1
-    #     order.save()
+    OrderItem.quantity += 1
+    OrderItem.save()
     messages.info(request, "This item quantity was updated.")
     return redirect("core:product", slug=slug)
     # else:
