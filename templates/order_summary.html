@@ -4,7 +4,10 @@
 <main>
 <div>{{object}}</div>
 {% for ite in object %}
-<div>{{ite}}</div>
+<div>{{ite.item.title}}</div>
+<div>{{ite.ordered_size}}</div>
+<div>{{ite.quantity}}</div>
+<div>{{ite.ordered}}</div>
 {% endfor %}
 </main>
 
