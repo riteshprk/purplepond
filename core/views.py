@@ -401,22 +401,16 @@ class PaymentView(View):
 
 
 @login_required
-def add_to_cart(request, slug):
-    form = ProductForm(request.POST or None)
-    get_size = ''
-    if form.is_valid():
-        get_size = form.cleaned_data.get('item_size')
+def add_to_cart(request, slug, size):
     item = get_object_or_404(Item, slug=slug)
-    print(form.is_valid())
-    print(get_size)
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
-        ordered_size=get_size,
+        ordered_size=size,
         ordered=False
     )
     order_qs = Order.objects.filter(
-        user=request.user, items__ordered_size=get_size, ordered=False)
+        user=request.user, items__ordered_size=size, ordered=False)
     if order_qs.exists():
         order = order_qs[0]
         # check if order item is in the order
@@ -439,11 +433,11 @@ def add_to_cart(request, slug):
 
 
 @login_required
-def remove_from_cart(request, slug):
+def remove_from_cart(request, slug, size):
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(
         user=request.user,
-        items__ordered_size=Item.size,
+        items__ordered_size=size,
         ordered=False
     )
     if order_qs.exists():
@@ -453,7 +447,7 @@ def remove_from_cart(request, slug):
             order_item = OrderItem.objects.filter(
                 item=item,
                 user=request.user,
-                ordered_size=get_size,
+                ordered_size=size,
                 ordered=False
             )[0]
             order.items.remove(order_item)
@@ -469,15 +463,11 @@ def remove_from_cart(request, slug):
 
 
 @login_required
-def remove_single_item_from_cart(request, slug):
-    form = ProductForm(request.POST or None)
-    get_size = ''
-    if form.is_valid():
-        get_size = form.cleaned_data.get('item_size')
+def remove_single_item_from_cart(request, slug, size):
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(
         user=request.user,
-        items__ordered_size=get_size,
+        items__ordered_size=size,
         ordered=False
     )
     if order_qs.exists():
@@ -487,7 +477,7 @@ def remove_single_item_from_cart(request, slug):
             order_item = OrderItem.objects.filter(
                 item=item,
                 user=request.user,
-                ordered_size=get_size,
+                ordered_size=size,
                 ordered=False
             )[0]
             if order_item.quantity > 1:
