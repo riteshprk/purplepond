@@ -77,18 +77,6 @@ class Item(models.Model):
             'slug': self.slug
         })
 
-    def get_add_to_cart_url(self):
-        return reverse("core:add_to_cart", kwargs={
-            'slug': self.slug,
-            'size': self.size
-        })
-
-    def get_remove_from_cart_url(self):
-        return reverse("core:remove_from_cart", kwargs={
-            'slug': self.slug,
-            'size': self.size
-        })
-
 
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
@@ -100,6 +88,18 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"
+
+    def get_add_to_cart_url(self):
+        return reverse("core:add_to_cart", kwargs={
+            'slug': self.slug,
+            'size': self.ordered_size
+        })
+
+    def get_remove_from_cart_url(self):
+        return reverse("core:remove_from_cart", kwargs={
+            'slug': self.slug,
+            'size': self.ordered_size
+        })
 
     def get_total_item_price(self):
         return self.quantity * self.item.price
