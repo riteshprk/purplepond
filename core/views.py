@@ -470,7 +470,7 @@ def add_single_item_to_cart(request, slug, size):
         item__slug=slug,
         ordered_size=size,
         ordered=False
-    )
+    )[0]
     if order.exists():
         #order = order_qs[0]
         # check if the order item is in the order
