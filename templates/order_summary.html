@@ -27,7 +27,7 @@
                         <td>{{ order_item.ordered_size }}</td>
                         <td>{{ order_item.item.price }}</td>
                         <td>
-                            <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug order_item.ordered_size%}"><em
+                            <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug order_item.ordered_size %}"><em
                                     class="fas fa-minus mr-2"></em></a>
                             {{ order_item.quantity }}
                             <a href="{% url 'core:add_to_cart' order_item.item.slug %}"><em
