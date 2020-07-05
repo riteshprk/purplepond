@@ -401,7 +401,7 @@ class PaymentView(View):
 
 
 @login_required
-def add_to_cart(request, slug, size):
+def add_to_cart(request, slug):
     form = ProductForm(request.POST or None)
     if form.is_valid():
         get_size = form.cleaned_data.get('item_size')
