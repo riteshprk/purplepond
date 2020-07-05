@@ -24,19 +24,19 @@
 
           <div class="mb-3">
             <a href="{{item.items.get_absolute_url}}">
-              <span class="badge purple mr-1">{{object.get_category_display}}</span>
+              <span class="badge purple mr-1">{{object.items.get_category_display}}</span>
             </a>
           </div>
 
           <p class="lead">
 
-            {% if object.discount_price %}
+            {% if object.items.discount_price %}
             <span class="mr-1">
-              <del>£{{object.price}}</del>
+              <del>£{{object.items.price}}</del>
             </span>
-            <span>£{{object.discount_price}}</span>
+            <span>£{{object.items.discount_price}}</span>
             {% else %}
-            <span>£{{object.price}}</span>
+            <span>£{{object.items.price}}</span>
             {% endif %}
           </p>
           <div class="row">
