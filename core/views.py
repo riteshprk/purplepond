@@ -465,13 +465,13 @@ def remove_from_cart(request, slug, size):
 @login_required
 def add_single_item_to_cart(request, slug, size):
     #item = get_object_or_404(Item, slug=slug)
-    order_qs = OrderItem.objects.filter(
+    order = OrderItem.objects.filter(
         user=request.user,
         ordered_size=size,
         ordered=False
     )
-    if order_qs.exists():
-        order = order_qs[0]
+    if order.exists():
+        #order = order_qs[0]
         # check if the order item is in the order
 
         order.quantity += 1
@@ -486,13 +486,13 @@ def add_single_item_to_cart(request, slug, size):
 @login_required
 def remove_single_item_from_cart(request, slug, size):
     #item = get_object_or_404(Item, slug=slug)
-    order_qs = OrderItem.objects.filter(
+    order = OrderItem.objects.filter(
         user=request.user,
         ordered_size=size,
         ordered=False
     )
-    if order_qs.exists():
-        order = order_qs[0]
+    if order.exists():
+       # order = order_qs[0]
         # check if the order item is in the order
 
         if order.quantity > 1:
