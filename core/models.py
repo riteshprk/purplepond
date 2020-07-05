@@ -114,6 +114,10 @@ class OrderItem(models.Model):
             return self.get_total_discount_item_price()
         return self.get_total_item_price()
 
+    def get_total(self):
+        all_order = self.order_set.all()
+        return all_order.get_total()
+
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
