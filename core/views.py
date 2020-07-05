@@ -440,14 +440,10 @@ def add_to_cart(request, slug):
 
 @login_required
 def remove_from_cart(request, slug):
-    form = ProductForm(request.POST or None)
-    get_size = ''
-    if form.is_valid():
-        get_size = form.cleaned_data.get('item_size')
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(
         user=request.user,
-        ordered_size=get_size,
+        items__ordered_size=Item.size,
         ordered=False
     )
     if order_qs.exists():
