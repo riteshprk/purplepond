@@ -30,13 +30,13 @@
 
           <p class="lead">
 
-            {% if object.item.discount_price %}
+            {% if object.discount_price %}
             <span class="mr-1">
-              <del>£{{object.item.price}}</del>
+              <del>£{{object.price}}</del>
             </span>
-            <span>£{{object.item.discount_price}}</span>
+            <span>£{{object.discount_price}}</span>
             {% else %}
-            <span>£{{object.item.price}}</span>
+            <span>£{{object.price}}</span>
             {% endif %}
           </p>
           <div class="row">
