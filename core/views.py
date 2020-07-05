@@ -470,7 +470,7 @@ def remove_from_cart(request, slug):
 
 @login_required
 def add_single_item_to_cart(request, slug, size):
-    item = get_object_or_404(Item, slug=slug)
+    #item = get_object_or_404(Item, slug=slug)
     order_qs = OrderItem.objects.filter(
         user=request.user,
         ordered_size=size,
@@ -491,7 +491,7 @@ def add_single_item_to_cart(request, slug, size):
 
 @login_required
 def remove_single_item_from_cart(request, slug, size):
-    item = get_object_or_404(Item, slug=slug)
+    #item = get_object_or_404(Item, slug=slug)
     order_qs = OrderItem.objects.filter(
         user=request.user,
         ordered_size=size,
