@@ -55,7 +55,10 @@ class OrderSummaryView(LoginRequiredMixin, View):
         try:
             items = get_object_or_404(
                 OrderItem, user=self.request.user, ordered=False)
-            order = Order.objects.get(user=self.request.user, items=items)
+            order = []
+            for item in items:
+                order = order.append(Order.objects.get(
+                    user=self.request.user, items=item))
             context = {
                 'object': order
             }
