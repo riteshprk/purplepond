@@ -11,6 +11,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Item title</th>
+            <th scope="col">Size</th>
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
             <th scope="col">Total Item Price</th>
@@ -21,6 +22,7 @@
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
             <td>{{ order_item.item.title }}</td>
+            <td>{{ order_item.item.size }}</td>
             <td>{{ order_item.item.price }}</td>
             <td>
                 <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug order_item.item.size %}"><i class="fas fa-minus mr-2"></i></a>
