@@ -53,8 +53,7 @@ class HomeView(ListView):
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         try:
-            order = Order.items.filter(
-                user=self.request.user, ordered=False)
+            order = Order.objects.get(user=self.request.user, ordered=False)
             context = {
                 'object': order
             }
@@ -405,32 +404,32 @@ def add_to_cart(request, slug):
     if form.is_valid():
         get_size = form.cleaned_data.get('item_size')
     item = get_object_or_404(Item, slug=slug)
-    order = OrderItem.objects.filter(
-        user=request.user, item=item, ordered_size=get_size, ordered=False)
-    if not order:
-        try:
-            OrderItem.objects.create(
-                user=request.user,
-                item=item,
-                ordered_size=get_size,
-                ordered=False
-            )
-            messages.info(
-                request, "This item is added in your cart!!")
-            return redirect("core:product", slug=slug)
-        except:
-            messages.warning(request, "This item is not added in your cart!!")
-            return redirect("core:product", slug=slug)
+    order_item, created = OrderItem.objects.get_or_create(
+        item=item,
+        user=request.user,
+        ordered_size=get_size,
+        ordered=False
+    )
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+    if order_qs.exists():
+        order = order_qs[0]
+        # check if the order item is in the order
+        if order.items.filter(item__slug=item.slug).exists():
+            order_item.quantity += 1
+            order_item.save()
+            messages.info(request, "This item quantity was updated.")
+            return redirect("core:order-summary")
+        else:
+            order.items.add(order_item)
+            messages.info(request, "This item was added to your cart.")
+            return redirect("core:order-summary")
     else:
-        order[0].quantity += 1
-        order[0].save()
-        messages.info(
-            request, "This item quantity was updated in your cart!!")
-        return redirect("core:product", slug=slug)
-
-    # else:
-    #     messages.info(request, "This item was added to your cart.")
-    #     return redirect("core:product", slug=slug)
+        ordered_date = timezone.now()
+        order = Order.objects.create(
+            user=request.user, ordered_date=ordered_date)
+        order.items.add(order_item)
+        messages.info(request, "This item was added to your cart.")
+        return redirect("core:order-summary")
 
 
 @login_required
