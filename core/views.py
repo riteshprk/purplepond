@@ -419,8 +419,8 @@ def add_to_cart(request, slug):
             messages.info(
                 request, "This item is added in your cart!!")
             return redirect("core:product", slug=slug)
-        except Exception as er:
-            messages.error(request, er)
+        except:
+            messages.warning(request, "This item is not added in your cart!!")
             return redirect("core:product", slug=slug)
     else:
         order[0].quantity += 1
