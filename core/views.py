@@ -408,7 +408,7 @@ def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
     order = OrderItem.objects.filter(
         user=request.user, item__slug=slug, ordered_size=get_size, ordered=False)
-    if order is None:
+    if not order:
         try:
             OrderItem.objects.create(
                 ordered_size=get_size,
