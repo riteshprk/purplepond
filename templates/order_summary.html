@@ -22,7 +22,7 @@
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
             <td>{{ order_item.item.title }}</td>
-            <td>{{ order_item.item.size }}</td>
+            <td>{{ order_item.ordered_size }}</td>
             <td>{{ order_item.item.price }}</td>
             <td>
                 <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug order_item.ordered_size %}"><i class="fas fa-minus mr-2"></i></a>
@@ -31,10 +31,10 @@
             </td>
             <td>
             {% if order_item.item.discount_price %}
-                ${{ order_item.get_total_discount_item_price }}
-                <span class="badge badge-primary">Saving ${{ order_item.get_amount_saved }}</span>
+                £{{ order_item.get_total_discount_item_price }}
+                <span class="badge badge-primary">Saving £{{ order_item.get_amount_saved }}</span>
             {% else %}
-                ${{ order_item.get_total_item_price }}
+                £{{ order_item.get_total_item_price }}
             {% endif %}
             <a style='color: red;' href="{% url 'core:remove_from_cart' order_item.item.slug order_item.ordered_size %}">
                 <i class="fas fa-trash float-right"></i>
@@ -54,13 +54,13 @@
         {% if object.coupon %}
         <tr>
             <td colspan="4"><b>Coupon</b></td>
-            <td><b>-${{ object.coupon.amount }}</b></td>
+            <td><b>-£{{ object.coupon.amount }}</b></td>
         </tr>
         {% endif %}
         {% if object.get_total %}
         <tr>
             <td colspan="4"><b>Order Total</b></td>
-            <td><b>${{ object.get_total }}</b></td>
+            <td><b>£{{ object.get_total }}</b></td>
         </tr>
         <tr>
             <td colspan="5">
