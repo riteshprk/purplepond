@@ -411,16 +411,14 @@ def add_to_cart(request, slug):
     if order is None:
         try:
             OrderItem.objects.create(
-                item=item,
-                user=request.user,
                 ordered_size=get_size,
                 ordered=False
             )
             messages.error(
-                request, "This item quantity was updated in your cart!!")
+                request, "This item is added in your cart!!")
             return redirect("core:product", slug=slug)
         except:
-            messages.error(request, "This item quantity was not added!!")
+            messages.error(request, "This item was not added!!")
             return redirect("core:product", slug=slug)
     else:
         order[0].quantity += 1
