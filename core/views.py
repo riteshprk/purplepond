@@ -416,16 +416,16 @@ def add_to_cart(request, slug):
                 ordered_size=get_size,
                 ordered=False
             )
-            messages.error(
+            messages.info(
                 request, "This item is added in your cart!!")
             return redirect("core:product", slug=slug)
-        except:
-            messages.error(request, "This item was not added!!")
+        except Exception as er:
+            messages.error(request, er)
             return redirect("core:product", slug=slug)
     else:
         order[0].quantity += 1
         order[0].save()
-        messages.error(
+        messages.info(
             request, "This item quantity was updated in your cart!!")
         return redirect("core:product", slug=slug)
 
