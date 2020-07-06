@@ -412,7 +412,6 @@ def add_to_cart(request, slug):
         try:
             OrderItem.objects.create(
                 user=request.user,
-                item__slug=slug,
                 ordered_size=get_size,
                 ordered=False
             )
