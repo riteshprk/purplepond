@@ -407,11 +407,12 @@ def add_to_cart(request, slug):
         get_size = form.cleaned_data.get('item_size')
     item = get_object_or_404(Item, slug=slug)
     order = OrderItem.objects.filter(
-        user=request.user, item__slug=slug, ordered_size=get_size, ordered=False)
+        user=request.user, item=item, ordered_size=get_size, ordered=False)
     if not order:
         try:
             OrderItem.objects.create(
                 user=request.user,
+                item=item,
                 ordered_size=get_size,
                 ordered=False
             )
