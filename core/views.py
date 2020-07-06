@@ -406,19 +406,30 @@ def add_to_cart(request, slug):
     if form.is_valid():
         get_size = form.cleaned_data.get('item_size')
     item = get_object_or_404(Item, slug=slug)
-    order_item, created = OrderItem.objects.get_or_create(
-        item=item,
-        user=request.user,
-        ordered_size=get_size,
-        ordered=False
-    )
-    # order = OrderItem.objects.filter(
-    #     user=request.user, item__slug=slug, ordered_size=get_size, ordered=False)[0]
-    # if order:
-    OrderItem.quantity += 1
-    OrderItem.save()
-    messages.info(request, "This item quantity was updated.")
-    return redirect("core:product", slug=slug)
+    order = OrderItem.objects.filter(
+        user=request.user, item__slug=slug, ordered_size=get_size, ordered=False)[0]
+    if order:
+        OrderItem.quantity += 1
+        OrderItem.save()
+        messages.error(
+            request, "This item quantity was updated in your cart!!")
+        return redirect("core:product", slug=slug)
+    else:
+        try:
+            OrderItem.objects.create(
+                item=item,
+                user=request.user,
+                ordered_size=get_size,
+                ordered=False
+            )
+            messages.error(
+                request, "This item quantity was updated in your cart!!")
+            return redirect("core:product", slug=slug)
+
+        except:
+            messages.error(request, "This item quantity was not added!!")
+            return redirect("core:product", slug=slug)
+
     # else:
     #     messages.info(request, "This item was added to your cart.")
     #     return redirect("core:product", slug=slug)
