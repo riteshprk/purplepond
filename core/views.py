@@ -423,8 +423,8 @@ def add_to_cart(request, slug):
             messages.error(request, "This item quantity was not added!!")
             return redirect("core:product", slug=slug)
     else:
-        OrderItem.quantity += 1
-        OrderItem.save()
+        order[0].quantity += 1
+        order[0].save()
         messages.error(
             request, "This item quantity was updated in your cart!!")
         return redirect("core:product", slug=slug)
