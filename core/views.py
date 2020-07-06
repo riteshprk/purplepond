@@ -53,7 +53,7 @@ class HomeView(ListView):
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         try:
-            order = Order.objects.filter(
+            order = Order.objects.get(
                 user=self.request.user, items__ordered=False)
             context = {
                 'object': order
