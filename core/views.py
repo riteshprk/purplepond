@@ -53,11 +53,9 @@ class HomeView(ListView):
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         try:
-
-            orders_item = OrderItem.objects.filter(
-                user=self.request.user, ordered=False).order_by('pk')
+            order = Order.objects.get(user=self.request.user, ordered=False)
             context = {
-                'object': orders_item
+                'object': order
             }
             return render(self.request, 'order_summary.html', context)
         except ObjectDoesNotExist:
