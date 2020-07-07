@@ -45,15 +45,9 @@ def is_valid_form(values):
 
 
 class HomeView(ListView):
-    def categories_view(self, request, *category):
-        if category is None:
-            model = Item
-            paginate_by = 8
-            template_name = "home-page.html"
-        else:
-            model = Item.objects.filter(category=category)
-            paginate_by = 8
-            template_name = "home-page.html"
+    model = Item
+    paginate_by = 8
+    template_name = "home-page.html"
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
