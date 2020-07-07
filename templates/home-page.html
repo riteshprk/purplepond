@@ -132,14 +132,14 @@
         </li>
         {% endif %}
         {% for page in page_obj.paginator.page_range %}
-        {% if page == page_obj.number %}}
+        {% if page == page_obj.number %}
         <li class="page-item active">
           <a>{{ page }}</a>
+          <span class="sr-only">(current)</span>
         </li>
         {% else %}
         <li>
           <a class="page-link" href="?page={{ page }}">{{ page }}
-            <span class="sr-only">(current)</span>
           </a>
         </li>
         {% endif %}
