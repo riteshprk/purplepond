@@ -46,7 +46,7 @@ def is_valid_form(values):
 
 class CategoryView(View):
     def get(self, *args, **kwargs):
-        obj = Item.objects.filter(category=self.request.arg)
+        obj = Item.objects.filter(category=kwargs)
         context = obj
         return render(self.request, "home-page.html", context)
 
