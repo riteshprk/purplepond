@@ -44,11 +44,10 @@ def is_valid_form(values):
     return valid
 
 
-class CategoryView(View):
-    def get(self, *args, **kwargs):
-        obj = Item.objects.filter(category=kwargs)
-        context = obj
-        return render(self.request, "home-page.html", context)
+class CategoryView(ListView):
+    def get(self, request, *args, **kwargs):
+        print(args, kwargs)
+        return 'Done'
 
 
 class HomeView(ListView):
