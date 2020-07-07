@@ -16,8 +16,9 @@ from .views import (
 app_name = 'core'
 
 urlpatterns = [
-    path('/<categories>', HomeView.as_view(), name='index'),
-    path('product/<slug>/', ItemDetailView.as_view(), name='product'),
+    path('', HomeView.as_view(), name='index'),
+    path('category/<slug>', HomeView.as_view(), name='categories'),
+    path('product/<slug>', ItemDetailView.as_view(), name='product'),
     path('order_summary/', OrderSummaryView.as_view(), name='order-summary'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('add_to_cart/<slug>', add_to_cart, name='add_to_cart'),
