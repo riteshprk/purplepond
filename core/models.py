@@ -10,8 +10,8 @@ from multiselectfield import MultiSelectField
 # Create your models here.
 CATEGORY_CHOICES = (
     ('S', 'T-Shirt'),
-    ('SW', 'Polo Shirt'),
-    ('O', 'Hoodies')
+    ('SW', 'Hoodies'),
+    ('O', 'Polo Shirt')
 )
 
 LABEL_CHOICES = (
