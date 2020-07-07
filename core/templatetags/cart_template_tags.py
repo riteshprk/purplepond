@@ -1,6 +1,7 @@
 
 from django import template
-from core.models import Order, OrderItem
+from django.http import HttpResponse
+from core.models import OrderItem
 
 register = template.Library()
 
