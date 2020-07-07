@@ -1,6 +1,6 @@
 
 from django import template
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from core.models import OrderItem
 
 register = template.Library()
@@ -14,5 +14,9 @@ def cart_item_count(user):
             count = 0
             for q in qs:
                 count += q.quantity
+
             return count
     return 0
+
+
+request.session['cart'] = cart_item_count
