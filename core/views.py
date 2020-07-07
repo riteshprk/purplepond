@@ -45,12 +45,12 @@ def is_valid_form(values):
 
 
 class CategoryView(ListView):
-    template_name = "home-page.html"
+    #template_name = "home-page.html"
     paginate_by = 8
 
     def get(self, request, slug):
-        obj = get_object_or_404(Item, category=slug)
-        return obj
+        context = get_object_or_404(Item, category=slug)
+        return render(self.request, "home-page.html", context)
 
 
 class HomeView(ListView):
