@@ -134,8 +134,9 @@
         {% for page in page_obj.paginator.page_range %}
         {% if page == page_obj.number %}
         <li class="page-item active">
-          <a>{{ page }}</a>
+          <a>{{ page }}
           <span class="sr-only">(current)</span>
+          </a>
         </li>
         {% else %}
         <li>
