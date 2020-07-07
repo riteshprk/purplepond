@@ -1,5 +1,5 @@
 
-from django import template, request
+from django import template
 from core.models import OrderItem
 register = template.Library()
 
