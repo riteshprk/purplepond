@@ -1,6 +1,6 @@
 
 from django import template
-from core.models import Order
+from core.models import Order, OrderItem
 
 register = template.Library()
 
@@ -10,5 +10,5 @@ def cart_item_count(user):
     if user.is_authenticated:
         qs = Order.objects.filter(user=user, ordered=False)
         if qs.exists():
-            return qs[0].items.count()
+            return qs[0].items.item.count()
     return 0
