@@ -13,5 +13,5 @@ def cart_item_count(user):
             count = 0
             for q in qs:
                 count += q.quantity
-            return count
+            return HttpResponse(count)
     return 0
