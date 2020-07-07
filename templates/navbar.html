@@ -37,7 +37,7 @@
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a href="{% url 'core:order-summary' %}" class="nav-link waves-effect">
-                        <span class="badge red z-depth-1 mr-1"> {{ request.session['cart'] }} </span>
+                        <span class="badge red z-depth-1 mr-1"> {{cart}} </span>
                         <em class="fas fa-shopping-cart"></em>
                         <span class="clearfix d-sm-inline-block"> Cart </span>
                     </a>
