@@ -45,10 +45,9 @@ def is_valid_form(values):
 
 
 class CategoryView(ListView):
-    def get(self, request):
-        slug = self.slug
+    def get(self, *args, **kwargs):
         print("ka ho mil gayeel")
-        print(slug)
+        print(kwargs)
         return 'Done'
 
 
