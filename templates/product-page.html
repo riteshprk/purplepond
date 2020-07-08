@@ -39,9 +39,10 @@
             <span>£{{object.price}}</span>
             {% endif %}
           </p>
+          <form action="{{object.get_add_to_cart_url}}" method="post"></form>
           <div class="row">
+            <div class="col-md-6">
 
-            <form action="{{object.get_add_to_cart_url}}" method="post">
               {% csrf_token %}
               <select class="form-control border colorful-select dropdown-primary"
                 style="width: auto !important; display: inline-block;" name="item_size" id="item_size" required>
@@ -57,10 +58,11 @@
                 {% endfor %}
               </select>
               <strong><label class="ml-2" for="item_size">Size</label></strong>
+            </div>
+            <div class="col-md-6">
               <button class="btn btn-primary" style="margin-left: 50px;" type="submit">Add to Cart</button>
+            </div>
             </form>
-
-
           </div>
           <!--Content-->
           <div>
