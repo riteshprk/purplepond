@@ -52,14 +52,14 @@ class CategoryView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ListView, self).get_context_data(**kwargs)
-        print(context)
+        print('humare ke dekha tara niche walah 3')
         return context
 
 
 class HomeView(ListView):
     model = Item
     paginate_by = 8
-    print('humare ke dekha tara niche walah')
+    print('humare ke dekha tara niche walah 2')
     template_name = "home-page.html"
 
 
