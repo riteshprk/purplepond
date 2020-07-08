@@ -45,10 +45,10 @@ def is_valid_form(values):
 
 
 class CategoryView(ListView):
-    def get(self, *args, **kwargs):
-        print("ka ho mil gayeel")
-        print(kwargs)
-        return 'Done'
+    def get(self, category='category'):
+        obj = Item.objects.filter(category=category)
+        print(obj)
+        return ('hello')
 
 
 class HomeView(ListView):
