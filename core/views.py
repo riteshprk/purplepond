@@ -286,7 +286,7 @@ class CheckoutView(View):
 
 class PaymentView(View):
     def get(self, *args, **kwargs):
-        pay_option = self.kwargs['option']
+        pay_option = self.kwargs['payment_option']
         order = Order.objects.get(user=self.request.user, ordered=False)
         if pay_option == 'stripe':
             if order.billing_address:
