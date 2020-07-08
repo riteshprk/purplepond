@@ -61,8 +61,12 @@ class CategoryView(ListView):
 class HomeView(ListView):
     model = Item
     paginate_by = 8
-    print('humare ke dekha tara niche walah 2')
-    template_name = "home-page.html"
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            qs = Item.objects.filter(title__icontains=query)
+            return qs
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
