@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<style>
+
+</style>
+{% endblock extra_head %}
+
+{% block content %}
+
+<main>
+    <div class="container wow fadeIn">
+
+        <h2 class="my-5 h2 text-center">Payment</h2>
+
+        <div class="row">
+
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <!-- Set up a container element for the button -->
+                    <div id="paypal-button-container"></div>
+
+                    <!-- Include the PayPal JavaScript SDK -->
+                    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
+
+
+
+                </div>
+            </div>
+
+            {% include "order_snippet.html" %}
+
+        </div>
+
+    </div>
+</main>
+
+{% endblock content %}
+
+{% block extra_scripts %}
+
+<script>
+
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+
+        style: {
+            color: 'blue',
+            shape: 'pill',
+            label: 'pay',
+            height: 40
+        }
+
+    }).render('#paypal-button-container');
+
+
+</script>
+
+{% endblock extra_scripts %}

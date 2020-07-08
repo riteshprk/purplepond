@@ -274,7 +274,7 @@ class CheckoutView(View):
                 if payment_option == 'S':
                     return redirect('core:payment', payment_option='stripe')
                 elif payment_option == 'P':
-                    return redirect('core:payment', payment_option='paypal')
+                    return redirect('core:paypalpayment', payment_option='paypal')
                 else:
                     messages.warning(
                         self.request, "Invalid payment option selected")
