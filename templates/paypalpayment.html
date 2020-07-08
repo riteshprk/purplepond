@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block extra_head %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <style>
 
 </style>
@@ -16,17 +18,17 @@
         <div class="row">
 
             <div class="col-md-6">
-                <div class="card">
-                    <!-- Set up a container element for the button -->
-                    <div id="paypal-button-container"></div>
+                <!-- #<div class="card"> -->
+                <!-- Set up a container element for the button -->
+                <div id="paypal-button-container"></div>
 
-                    <!-- Include the PayPal JavaScript SDK -->
-                    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
-
-
+                <!-- Include the PayPal JavaScript SDK -->
+                <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 
 
-                </div>
+
+
+
             </div>
 
             {% include "order_snippet.html" %}
