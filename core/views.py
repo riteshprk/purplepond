@@ -286,31 +286,40 @@ class CheckoutView(View):
 
 class PaymentView(View):
     def get(self, *args, **kwargs):
+        pay_option = self.kwargs['option']
         order = Order.objects.get(user=self.request.user, ordered=False)
-        if order.billing_address:
-            context = {
-                'order': order,
-                'DISPLAY_COUPON_FORM': False
-            }
-            userprofile = self.request.user.userprofile
-            if userprofile.one_click_purchasing:
-                # fetch the users card list
-                cards = stripe.Customer.list_sources(
-                    userprofile.stripe_customer_id,
-                    limit=3,
-                    object='card'
-                )
-                card_list = cards['data']
-                if len(card_list) > 0:
-                    # update the context with the default card
-                    context.update({
-                        'card': card_list[0]
-                    })
-            return render(self.request, "payment.html", context)
+        if pay_option == 'stripe':
+            if order.billing_address:
+                context = {
+                    'order': order,
+                    'DISPLAY_COUPON_FORM': False
+                }
+                userprofile = self.request.user.userprofile
+                if userprofile.one_click_purchasing:
+                    # fetch the users card list
+                    cards = stripe.Customer.list_sources(
+                        userprofile.stripe_customer_id,
+                        limit=3,
+                        object='card'
+                    )
+                    card_list = cards['data']
+                    if len(card_list) > 0:
+                        # update the context with the default card
+                        context.update({
+                            'card': card_list[0]
+                        })
+                return render(self.request, "payment.html", context)
+            else:
+                messages.warning(
+                    self.request, "You have not added billing address")
+                return redirect("core:checkout")
         else:
-            messages.warning(
-                self.request, "You have not added billing address")
-            return redirect("core:checkout")
+            if pay_option == 'paypal':
+                return render(self.request, "paypalpayment.html")
+            else:
+                messages.warning(
+                    self.request, "You have not selected payment option")
+                return redirect("core:checkout")
 
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
