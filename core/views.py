@@ -49,7 +49,8 @@ class CategoryView(ListView):
     template_name = "home-page.html"
 
     def get_queryset(self):
-        return Item.objects.filter(category=self.kwargs['category'])
+        print(self.kwargs['category'])
+        return Item.objects.filter(category=self.kwargs['category']).first()
 
 
 class HomeView(ListView):
