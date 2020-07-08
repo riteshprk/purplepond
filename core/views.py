@@ -44,11 +44,11 @@ def is_valid_form(values):
     return valid
 
 
-class CategoryView(ListView):
-    def get(self, category='category'):
-        obj = Item.objects.filter(category=category)
-        print('humare ke dekha tara')
-        return ('hello')
+# class CategoryView(ListView):
+#     def get(self, category='category'):
+#         obj = Item.objects.filter(category=category)
+#         print('humare ke dekha tara')
+#         return ('hello')
 
 
 class HomeView(ListView):
@@ -56,6 +56,10 @@ class HomeView(ListView):
     paginate_by = 8
     print('humare ke dekha tara niche walah')
     template_name = "home-page.html"
+
+    def get(self, category='category'):
+        print('humare ke dekha tara niche walah getwa ha')
+        return 'hello'
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
