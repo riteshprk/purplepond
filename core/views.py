@@ -59,13 +59,16 @@ class CategoryView(ListView):
 
 
 class HomeView(ListView):
-    model = Item
     paginate_by = 8
+    template_name = "home-page.html"
 
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
             qs = Item.objects.filter(title__icontains=query)
+            return qs
+        else:
+            qs = Item.objects.all()
             return qs
 
 
