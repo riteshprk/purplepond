@@ -45,11 +45,10 @@ def is_valid_form(values):
 
 
 class CategoryView(ListView):
-   # paginate_by = 8
+    paginate_by = 8
     template_name = "home-page.html"
 
     def get_queryset(self):
-        print(self.kwargs['category'])
         qs = Item.objects.filter(category=self.kwargs['category'])
         return qs
 
