@@ -23,18 +23,18 @@
 
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item {% if url == '/' %}active{% endif %}">
             <a class="nav-link" href="/">All
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {% if url == '/category/S' %}active{% endif %}">
             <a class="nav-link" href="/category/S">T-Shirts</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {% if url == '/category/SW' %}active{% endif %}">
             <a class="nav-link" href="/category/SW">Hoodies</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {% if url == '/category/O' %}active{% endif %}">
             <a class="nav-link" href="/category/O">Polo Shirts</a>
           </li>
 
