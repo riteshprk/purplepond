@@ -53,6 +53,7 @@ class CategoryView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ListView, self).get_context_data(**kwargs)
         print('humare ke dekha tara niche walah 3')
+        print(context)
         return context
 
 
