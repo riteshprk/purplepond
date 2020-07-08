@@ -23,7 +23,7 @@
 
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
-        {{request.get_full_path()}}
+        {{request.get_full_path}}
         {% with url_name=request.resolver_match.url_name %}
           <li class="nav-item {% if url_name == '/' %}active{% endif %}">
             <a class="nav-link" href="/">All
