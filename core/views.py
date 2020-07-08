@@ -51,6 +51,7 @@ class CategoryView(ListView):
     def get_queryset(self):
         self.category = get_object_or_404(
             Item, category=self.kwargs['category'])
+        print(self.category)
         return self.category
 
 
