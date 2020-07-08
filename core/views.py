@@ -51,7 +51,7 @@ class CategoryView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
-            qs = Item.objects.filter(category__unaccent__icontains=query)
+            qs = Item.objects.filter(title__icontains=query)
             return qs
         else:
             qs = Item.objects.filter(category=self.kwargs['category'])
