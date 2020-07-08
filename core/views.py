@@ -47,7 +47,7 @@ def is_valid_form(values):
 class CategoryView(ListView):
     def get(self, category='category'):
         obj = Item.objects.filter(category=category)
-        print(obj)
+        print('humare ke dekha tara')
         return ('hello')
 
 
