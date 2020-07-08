@@ -54,6 +54,7 @@ class CategoryView(ListView):
 class HomeView(ListView):
     model = Item
     paginate_by = 8
+    print('humare ke dekha tara niche walah')
     template_name = "home-page.html"
 
 
