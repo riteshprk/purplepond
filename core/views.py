@@ -68,7 +68,7 @@ class HomeView(ListView):
             qs = Item.objects.filter(title__icontains=query)
             return qs
         else:
-            qs = Item.objects.order_by('?').first()
+            qs = Item.objects.order_by('?').all()
             return qs
 
 
