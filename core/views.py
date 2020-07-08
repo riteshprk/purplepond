@@ -55,6 +55,7 @@ class CategoryView(ListView):
             return qs
         else:
             qs = Item.objects.filter(category=self.kwargs['category'])
+            print(qs)
             return qs
 
 
@@ -66,6 +67,7 @@ class HomeView(ListView):
         query = self.request.GET.get('q')
         if query:
             qs = Item.objects.filter(title__icontains=query)
+            print(qs)
             return qs
         else:
             qs = Item.objects.order_by('?')
