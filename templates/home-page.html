@@ -23,23 +23,23 @@
 
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
-        {{request.get_full_path}}
-        {% with url_name=request.resolver_match.url_name %}
-          <li class="nav-item {% if url_name == '/' %}active{% endif %}">
+        
+        {% with url_path=request.get_full_path %}
+          <li class="nav-item {% if url_path == '/' %}active{% endif %}">
             <a class="nav-link" href="/">All
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item {% if url_name == '/category/S' %}active{% endif %}">
+          <li class="nav-item {% if url_path == '/category/S' %}active{% endif %}">
             <a class="nav-link" href="/category/S">T-Shirts</a>
           </li>
-          <li class="nav-item {% if url_name == '/category/SW' %}active{% endif %}">
+          <li class="nav-item {% if url_path == '/category/SW' %}active{% endif %}">
             <a class="nav-link" href="/category/SW">Hoodies</a>
           </li>
-          <li class="nav-item {% if url_name == '/category/O' %}active{% endif %}">
+          <li class="nav-item {% if url_path == '/category/O' %}active{% endif %}">
             <a class="nav-link" href="/category/O">Polo Shirts</a>
           </li>
-          <li class="nav-item {% if url_name == '/category/O' %}active{% endif %}">
+          <li class="nav-item {% if url_path == '/category/O' %}active{% endif %}">
             <a class="nav-link" href="/category/O">{{url_name}}</a>
           </li>
         {% endwith %}
