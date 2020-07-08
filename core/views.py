@@ -45,10 +45,15 @@ def is_valid_form(values):
 
 
 class CategoryView(ListView):
-    def get(self, category='category'):
-        obj = Item.objects.filter(category=category)
-        print('humare ke dekha tara')
-        return render(self.request, "home-page.html", obj)
+    model = Item
+    paginate_by = 8
+    print('humare ke dekha tara niche walah')
+    template_name = "home-page.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ListView, self).get_context_data(**kwargs)
+        print(context)
+        return context
 
 
 class HomeView(ListView):
