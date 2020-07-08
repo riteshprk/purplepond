@@ -45,7 +45,7 @@ def is_valid_form(values):
 
 
 class CategoryView(ListView):
-    model = Item
+    model = Item.objects.filter(category='o')
     paginate_by = 8
     print('humare ke dekha tara niche walah')
     template_name = "home-page.html"
