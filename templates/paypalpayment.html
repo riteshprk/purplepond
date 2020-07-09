@@ -71,7 +71,7 @@
 
         // Finalize the transaction
         onApprove: function (data, actions) {
-            return fetch('/capture-paypal-transaction', {
+            return fetch('capture-paypal-transaction/', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'
