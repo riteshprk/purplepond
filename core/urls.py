@@ -11,7 +11,8 @@ from .views import (
     PaymentView,
     AddCouponView,
     RequestRefundView,
-    CategoryView
+    CategoryView,
+    paypal_transaction
 )
 
 app_name = 'core'
@@ -31,5 +32,8 @@ urlpatterns = [
     path('add-item-to-cart/<slug>/<size>', add_single_item_to_cart,
          name='add-single-item-to-cart'),
     path('payment/<payment_option>/', PaymentView.as_view(), name='payment'),
-    path('request-refund/', RequestRefundView.as_view(), name='request-refund')
+    path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
+
+    path('capture-paypal-transaction/', paypal_transaction, name='paypalpayment')
+
 ]

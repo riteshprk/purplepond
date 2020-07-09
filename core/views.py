@@ -432,6 +432,31 @@ class PaymentView(View):
         return redirect("/payment/stripe/")
 
 
+def paypal_transaction(request):
+    order = Order.objects.get(user=request.user, ordered=False)
+  # create the payment
+    payment = Payment()
+    payment.stripe_charge_id = request.POST['orderID']
+    payment.user = request.user
+    payment.amount = order.get_total()
+    payment.save()
+
+    # assign the payment to the order
+
+    order_items = order.items.all()
+    order_items.update(ordered=True)
+    for item in order_items:
+        item.save()
+
+    order.ordered = True
+    order.payment = payment
+    order.ref_code = create_ref_code()
+    order.save()
+
+    messages.success(request, "Your order was successful!")
+    return redirect("/")
+
+
 @login_required
 def add_to_cart(request, slug):
     form = ProductForm(request.POST or None)
