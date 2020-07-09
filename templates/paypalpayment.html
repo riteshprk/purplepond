@@ -86,7 +86,8 @@
         fetch('capture-paypal-transaction/', {
             method: 'post',
             headers: {
-                'content-type': 'application/json',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
                 'X-CSRFToken': csrfmiddlewaretoken,
             },
             body: JSON.stringify({ 'orderID': 'yyyyyy123' })
