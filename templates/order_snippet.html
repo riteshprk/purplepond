@@ -1,9 +1,10 @@
+            {% load cart_template_tags %}
             <!--Grid column-->
             <div class="col-md-12 mb-4">
                 <!-- Heading -->
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill">{{ order.items.quantity }}</span>
+                    <span class="badge badge-secondary badge-pill">{{request.user|cart_item_count}}</span>
                 </h4>
 
                 <!-- Cart -->
