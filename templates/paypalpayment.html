@@ -89,17 +89,14 @@
                 'content-type': 'application/json',
                 'X-CSRFToken': csrfmiddlewaretoken,
             },
-            body: JSON.stringify({
-                'orderID': 'yyyyyy111'
-            })
-        }).then(function (res) {
-            return res.json();
-        }).then(function (details) {
-            console.log('success')
-            alert('success')
+            body: JSON.stringify({ 'orderID': 'yyyyyy111' }).then(function (res) {
+                return res.json();
+            }).then(function (details) {
+                console.log('success')
+                alert('success')
 
-        })
-    }
+            })
+        }
 
 
 
