@@ -17,6 +17,12 @@
                         <span class="text-muted">£{{order_item.get_final_price}}</span>
                     </li>
                     {% endfor %}
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Shipping Charge</h6>
+                        </div>
+                        <span class="text-muted">Free}</span>
+                    </li>
                     {% if order.coupon %}
                     <li class="list-group-item d-flex justify-content-between bg-light">
                         <div class="text-success">
