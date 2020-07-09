@@ -88,15 +88,11 @@
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                //'X-CSRFToken': csrfmiddlewaretoken,
+                'X-CSRFToken': csrfmiddlewaretoken,
             },
             body: JSON.stringify({ 'orderID': 'yyyyyy123' })
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-                alert('Transaction complete');
-            })
+
 
     }
 
