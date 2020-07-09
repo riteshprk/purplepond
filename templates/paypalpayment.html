@@ -44,7 +44,10 @@
 
 <script>
 
-    var total = "{{order.items.get_final_price}}"
+    var total = "{{order.items.get_final_price}}";
+
+    console.log(order);
+    console.log(total);
 
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
