@@ -84,11 +84,11 @@
 
     function submitData() {
         fetch('capture-paypal-transaction/', {
-            method: 'post',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'X-CSRFToken': csrfmiddlewaretoken,
+                //'X-CSRFToken': csrfmiddlewaretoken,
             },
             body: JSON.stringify({ 'orderID': 'yyyyyy123' })
         })
