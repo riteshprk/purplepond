@@ -44,7 +44,7 @@
 
 <script>
 
-
+    var total = "{{order.items.get_final_price}}"
 
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
@@ -61,7 +61,7 @@
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: '0.01'
+                        value: parseFloat(total).toFixed(2)//'0.01'
                     }
                 }]
             });
