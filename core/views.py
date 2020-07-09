@@ -433,6 +433,7 @@ class PaymentView(View):
         return redirect("/payment/stripe/")
 
 
+@login_required
 def paypal_transaction(request):
     order = Order.objects.get(user=request.user, ordered=False)
 
