@@ -1,4 +1,5 @@
 import os
+import json
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
@@ -434,27 +435,37 @@ class PaymentView(View):
 
 def paypal_transaction(request):
     order = Order.objects.get(user=request.user, ordered=False)
-  # create the payment
-    payment = Payment()
-    payment.stripe_charge_id = request.POST['orderID']
-    payment.user = request.user
-    payment.amount = order.get_total()
-    payment.save()
 
-    # assign the payment to the order
+    if request.method == 'POST':
+        # request.raw_post_data w/ Django < 1.4
+        json_data = json.loads(request.body)
+    try:
+        data = json_data['orderID']
+      # create the payment
+        payment = Payment()
+        payment.stripe_charge_id = data
+        payment.user = request.user
+        payment.amount = order.get_total()
+        payment.save()
 
-    order_items = order.items.all()
-    order_items.update(ordered=True)
-    for item in order_items:
-        item.save()
+        # assign the payment to the order
 
-    order.ordered = True
-    order.payment = payment
-    order.ref_code = create_ref_code()
-    order.save()
+        order_items = order.items.all()
+        order_items.update(ordered=True)
+        for item in order_items:
+            item.save()
 
-    messages.success(request, "Your order was successful!")
-    return redirect("/")
+        order.ordered = True
+        order.payment = payment
+        order.ref_code = create_ref_code()
+        order.save()
+
+        messages.success(request, "Your order was successful!")
+        return redirect("/")
+    except Exception as e:
+        print(e)
+        messages.success(request, "Your order was not successful! Try again")
+        return redirect("/payment/paypal")
 
 
 @login_required
