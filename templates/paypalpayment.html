@@ -47,7 +47,7 @@
     src="https://www.paypal.com/sdk/js?client-id=ASNlzmbPmt2HsasN9bLQKspdcCaWOJushqa8C2qHsbMVbrM8tUoYZXGF11wOncd6mQeJw7eQAdHuZsGs&currency=GBP"></script>
 
 <script>
-    csrfmiddlewaretoken = '{{ csrf_token }}'
+    csrfmiddlewaretoken = '{{ csrf_token }}';
     var total = "{{order.get_total}}";
 
     // Render the PayPal button into #paypal-button-container
@@ -92,12 +92,12 @@
             body: JSON.stringify({ 'orderID': 'yyyyyy111' }).then(function (res) {
                 return res.json();
             }).then(function (details) {
-                console.log('success')
-                alert('success')
+                console.log('success');
+                alert('success');
 
             })
         }
-
+    }
 
 
 </script>
