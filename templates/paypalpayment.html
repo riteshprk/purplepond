@@ -19,7 +19,7 @@
 
             <div class="col-md-6" style="float:none;margin:auto;">
                 <!-- #<div class="card"> -->
-                <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
                 <!-- Set up a container element for the button -->
                 <div id="paypal-button-container"></div>
 
@@ -39,7 +39,7 @@
 
 {% block extra_scripts %}
 
-
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 
 <script>
 
@@ -53,10 +53,10 @@
             shape: 'pill',
             label: 'pay',
             height: 40
-        }
+        },
 
-            // Set up the transaction
-            createOrder: function (data, actions) {
+        // Set up the transaction
+        createOrder: function (data, actions) {
             return actions.order.create({
                 purchase_units: [{
                     amount: {
