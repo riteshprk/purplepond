@@ -288,10 +288,11 @@ class PaymentView(View):
     def get(self, *args, **kwargs):
         pay_option = self.kwargs['payment_option']
         order = Order.objects.get(user=self.request.user, ordered=False)
-
+        total_price = order.items.all()
         if order.billing_address:
             context = {
                 'order': order,
+                'total': total_price.get_final_price(),
                 'DISPLAY_COUPON_FORM': False
             }
             userprofile = self.request.user.userprofile
