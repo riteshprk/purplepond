@@ -77,7 +77,7 @@
             return actions.order.capture().then(function (details) {
                 submitData(data)
                 // This function shows a transaction success message to your buyer.
-                alert('Transaction completed by ' + details.status);
+                alert('Transaction completed by ' + details.status + data.orderID);
             });
         }
     }).render('#paypal-button-container');
