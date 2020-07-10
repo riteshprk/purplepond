@@ -462,11 +462,11 @@ def paypal_transaction(request):
         order.save()
 
         messages.success(request, "Your order was successful!")
-        return redirect("core:index")
+        return ("/")
     except Exception as e:
         print(e)
         messages.success(request, "Your order was not successful! Try again")
-        return redirect("core:paypalpayment")
+        return ("/payment/paypal")
 
 
 @login_required
