@@ -89,6 +89,7 @@
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
                 'X-CSRFToken': csrfmiddlewaretoken,
+                'X-Requested-With': 'XMLHttpRequest'
             },
             body: JSON.stringify({ 'orderID': 'yyyyyy157' })
         })
