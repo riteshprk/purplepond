@@ -92,7 +92,11 @@
             },
             body: JSON.stringify({ 'orderID': 'yyyyyy157' })
         })
-
+            .then((response) => response.json())
+            .then(() => {
+                console.log('Success:');
+                alert('Transaction complete');
+            })
 
     }
 
