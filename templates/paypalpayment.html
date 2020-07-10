@@ -96,7 +96,8 @@
             .then((response) => response.json())
             .then((data) => {
                 console.log('Success:', data['url']);
-                window.location.href = '{% url' + data['url'] + ' %}'
+                url_string = '{% url' + data['url'] + ' %}'
+                window.location.href = url_string
 
             })
 
