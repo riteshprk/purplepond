@@ -96,7 +96,8 @@
             .then((response) => response.json())
             .then((data) => {
                 url_path = data['url'];
-                window.location.href = "{% url '{{url_path}}' %}"
+
+                window.location.href = "{% load url from future %} {% url 'url_path' %}"
 
             })
 
