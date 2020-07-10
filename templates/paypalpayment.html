@@ -95,9 +95,14 @@
         })
             .then((response) => response.json())
             .then((data) => {
-                url_path = data['url'];
+                if (data['success']) {
+                    //  block of code to be executed if the condition is true
+                    window.location.href = "{% url core:index %}"
+                } else {
+                    //  block of code to be executed if the condition is false
+                    window.location.href = "{% url core:payment %}"
+                }
 
-                //window.location.href = "{% url url_path %}"
 
             })
 

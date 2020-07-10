@@ -32,7 +32,7 @@ urlpatterns = [
     path('add-item-to-cart/<slug>/<size>', add_single_item_to_cart,
          name='add-single-item-to-cart'),
     path('payment/<payment_option>/', PaymentView.as_view(), name='payment'),
-    path('payment/paypal/',
+    path('payment/paypal/capture-paypal-transaction/',
          paypal_transaction, name='paypalpayment'),
     path('request-refund/', RequestRefundView.as_view(), name='request-refund')
 
