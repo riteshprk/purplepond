@@ -460,13 +460,13 @@ def paypal_transaction(request):
         order.payment = payment
         order.ref_code = create_ref_code()
         order.save()
-
+        data = 'success1'
         messages.success(request, "Your order was successful!")
-        return ("/")
+        return render(request, '/', data)
     except Exception as e:
         print(e)
         messages.success(request, "Your order was not successful! Try again")
-        return ("/payment/paypal")
+        return render(request, "/payment/paypal", data)
 
 
 @login_required
