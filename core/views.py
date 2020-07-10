@@ -463,12 +463,12 @@ def paypal_transaction(request):
             order.save()
             data = 'success1'
             messages.success(request, "Your order was successful!")
-            return JsonResponse({'data': data})
+            return JsonResponse('/')
         except Exception as e:
             print(e)
             messages.success(
                 request, "Your order was not successful! Try again")
-            return JsonResponse({'data': data})
+            return JsonResponse('/payment/paypal')
 
 
 @login_required
