@@ -440,33 +440,34 @@ def paypal_transaction(request):
     if request.method == 'POST':
         # request.raw_post_data w/ Django < 1.4
         json_data = json.loads(request.body)
-    try:
-        data = json_data['orderID']
-      # create the payment
-        payment = Payment()
-        payment.stripe_charge_id = data
-        payment.user = request.user
-        payment.amount = order.get_total()
-        payment.save()
+        try:
+            data = json_data['orderID']
+        # create the payment
+            payment = Payment()
+            payment.stripe_charge_id = data
+            payment.user = request.user
+            payment.amount = order.get_total()
+            payment.save()
 
-        # assign the payment to the order
+            # assign the payment to the order
 
-        order_items = order.items.all()
-        order_items.update(ordered=True)
-        for item in order_items:
-            item.save()
+            order_items = order.items.all()
+            order_items.update(ordered=True)
+            for item in order_items:
+                item.save()
 
-        order.ordered = True
-        order.payment = payment
-        order.ref_code = create_ref_code()
-        order.save()
-        data = 'success1'
-        messages.success(request, "Your order was successful!")
-        return render(request, '/', data)
-    except Exception as e:
-        print(e)
-        messages.success(request, "Your order was not successful! Try again")
-        return render(request, "/payment/paypal", data)
+            order.ordered = True
+            order.payment = payment
+            order.ref_code = create_ref_code()
+            order.save()
+            data = 'success1'
+            messages.success(request, "Your order was successful!")
+            return render(request, '/', {'data': data})
+        except Exception as e:
+            print(e)
+            messages.success(
+                request, "Your order was not successful! Try again")
+            return render(request, "/payment/paypal", {'data': data})
 
 
 @login_required
