@@ -462,13 +462,15 @@ def paypal_transaction(request):
             order.ref_code = create_ref_code()
             order.save()
             messages.success(request, "Your order was successful!")
-            return JsonResponse({'success': True})
+            JsonResponse({'success': True})
+            return redirect('core:index')
 
         except Exception as e:
             print(e)
             messages.success(
                 request, "Your order was not successful! Try again")
-            return JsonResponse({'success': False})
+            JsonResponse({'success': False})
+            return redirect('core:paypalpayment', 'paypal')
 
 
 @login_required
