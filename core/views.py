@@ -1,5 +1,6 @@
 import os
 import json
+from django.http import JsonResponse
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
@@ -462,12 +463,12 @@ def paypal_transaction(request):
             order.save()
             data = 'success1'
             messages.success(request, "Your order was successful!")
-            return render(request, '/', {'data': data})
+            return JsonResponse({'data': data})
         except Exception as e:
             print(e)
             messages.success(
                 request, "Your order was not successful! Try again")
-            return render(request, "/payment/paypal", {'data': data})
+            return JsonResponse({'data': data})
 
 
 @login_required
