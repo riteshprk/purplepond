@@ -474,6 +474,7 @@ def paypal_transaction(request):
 @login_required
 def add_to_cart(request, slug):
     form = ProductForm(request.POST or None)
+    get_size = ''
     if form.is_valid():
         get_size = form.cleaned_data.get('item_size')
     item = get_object_or_404(Item, slug=slug)
@@ -642,3 +643,16 @@ class RequestRefundView(View):
             except ObjectDoesNotExist:
                 messages.info(self.request, "This order does not exist.")
                 return redirect("core:request-refund")
+
+
+class MyAccount(View):
+    def get(self, *args, **kwargs):
+
+        context = {
+            'data': 'dd'
+        }
+        return render(self.request, "account_detail.html", context)
+
+    def post(self, *args, **kwargs):
+        #form = RefundForm(self.request.POST)
+        pass
