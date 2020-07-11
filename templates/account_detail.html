@@ -22,27 +22,21 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Ordered Date</th>
                                 <th scope="col">Order ID</th>
-                                <th scope="col">Item</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">Quantity</th>
                                 <th scope="col">Total Price</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             {% for object_item in object %}
-                            {% for order_item in object_item.items.all %}
+                            <!-- {% for order_item in object_item.items.all %} -->
                             <tr>
                                 <th scope="row">{{ forloop.parentloop.counter }}</th>
                                 <td>{{ object_item.order_date }}</td>
                                 <td>{{ object_item.ref_code }}</td>
-                                <td>{{ order_item.item.title }}</td>
-                                <td>{{ order_item.ordered_size }}</td>
-                                <td>{{ order_item.quantity }}</td>
-                                <td>{{ order_item.get_total_item_price}}</td>
+                                <td>{{ object_item.get_total}}</td>
                             </tr>
                             {% endfor %}
-                            {% endfor %}
+                            <!-- {% endfor %} -->
 
 
                         </tbody>
