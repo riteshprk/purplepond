@@ -36,18 +36,18 @@
                                 <td>{{ object_item.get_total}}</td>
                             </tr>
 
-                            <div id="show_detail">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Size</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Total Price</th>
 
-                                    </tr>
-                                </thead>
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Total Price</th>
+
+                                </tr>
+                            </thead>
                         <tbody>
                             {% for order_item in object_item.items.all %}
                             <tr>
@@ -59,19 +59,20 @@
                                 <td>{{ order_item.get_final_price}}</td>
                             </tr>
                             {% endfor %}
+
                         </tbody>
+
+
+
+                        {% endfor %}
+
+                        </tbody>
+
+
+                    </table>
                 </div>
-
-
-                {% endfor %}
-                <!-- {% endfor %} -->
-                </tbody>
-
-
-                </table>
             </div>
-    </div>
-    </section>
+        </section>
     </div>
 </main>
 {% endblock%}
