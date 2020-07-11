@@ -1,6 +1,5 @@
 import os
 import json
-import itertools
 from django.http import JsonResponse
 from django.conf import settings
 from django.contrib import messages
@@ -647,8 +646,8 @@ class RequestRefundView(View):
 
 
 class MyAccount(View):
+
     def get(self, *args, **kwargs):
-        iterator = itertools.count()
         try:
             order = Order.objects.filter(
                 user=self.request.user, ordered=True).order_by('-order_date')
