@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                             {% for object_item in object %}
-                            {% for order_item in object_item.items.all %} -->
+
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ object_item.order_date }}</td>
@@ -49,6 +49,7 @@
                                     </tr>
                                 </thead>
                         <tbody>
+                            {% for order_item in object_item.items.all %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ order_item.item.title }}</td>
@@ -57,20 +58,20 @@
                                 <td>{{ order_item.item.price }}</td>
                                 <td>{{ order_item.get_final_price}}</td>
                             </tr>
-
+                            {% endfor %}
                         </tbody>
-
-                        </tbody>
-                        {% endfor %}
-                        {% endfor %}
-                        <!-- {% endfor %} -->
-
-
-                        </tbody>
-                    </table>
                 </div>
+
+
+                {% endfor %}
+                <!-- {% endfor %} -->
+                </tbody>
+
+
+                </table>
             </div>
-        </section>
+    </div>
+    </section>
     </div>
 </main>
 {% endblock%}
