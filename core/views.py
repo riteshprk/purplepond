@@ -647,11 +647,17 @@ class RequestRefundView(View):
 
 class MyAccount(View):
     def get(self, *args, **kwargs):
-
-        context = {
-            'data': 'dd'
-        }
-        return render(self.request, "account_detail.html", context)
+        try:
+            order = Order.objects.filter(
+                user=self.request.user, ordered=True).order_by('pk').first()
+            context = {
+                'object': order
+            }
+            return render(self.request, '"account_detail.html', context)
+        except ObjectDoesNotExist:
+            messages.warning(
+                self.request, "You do not have an completed order")
+            return render(self.request, '"account_detail.html', context)
 
     def post(self, *args, **kwargs):
         #form = RefundForm(self.request.POST)

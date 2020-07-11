@@ -15,6 +15,35 @@
             <div class="row wow fadeIn">
                 <div class="col-6 offset-3">
                     <h1>{% trans "My Account" %}</h1>
+                    <h2>Order History</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Ordered Date</th>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Item title</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total Price</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order_item in object.items.all %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ object.order_date }}</td>
+                                <td>{{ object.ref_code }}</td>
+                                <td>{{ order_item.item.title }}</td>
+                                <td>{{ order_item.ordered_size }}</td>
+                                <td>{{ order_item.quantity }}</td>
+                                <td>{{ order_item.get_total_item_price}}</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
