@@ -653,11 +653,11 @@ class MyAccount(View):
             context = {
                 'object': order
             }
-            return render(self.request, '"account_detail.html', context)
+            return render(self.request, 'account_detail.html', context)
         except ObjectDoesNotExist:
             messages.warning(
                 self.request, "You do not have an completed order")
-            return render(self.request, '"account_detail.html', context)
+            return render(self.request, 'account_detail.html', context)
 
     def post(self, *args, **kwargs):
         #form = RefundForm(self.request.POST)
