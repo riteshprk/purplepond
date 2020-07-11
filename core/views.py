@@ -649,7 +649,7 @@ class MyAccount(View):
     def get(self, *args, **kwargs):
         try:
             order = Order.objects.filter(
-                user=self.request.user, ordered=True).order_by('pk').first()
+                user=self.request.user, ordered=True).order_by('pk')
             context = {
                 'object': order
             }
