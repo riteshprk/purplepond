@@ -652,8 +652,7 @@ class MyAccount(View):
             order = Order.objects.filter(
                 user=self.request.user, ordered=True).order_by('-order_date')
             context = {
-                'object': order,
-                'iterator': iterator
+                'object': order
             }
             return render(self.request, 'account_detail.html', context)
         except ObjectDoesNotExist:
