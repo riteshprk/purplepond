@@ -36,7 +36,7 @@ urlpatterns = [
     path('payment/paypal/capture-paypal-transaction/',
          paypal_transaction, name='paypalpayment'),
     path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
-    path('/accounts/myaccount', MyAccount.as_view(), name='myaccount')
+    path('myaccount/', MyAccount.as_view(), name='myaccount')
 
 
 
