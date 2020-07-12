@@ -95,7 +95,7 @@ class OrderItem(models.Model):
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    ordered_size = models.CharField(max_length=6)
+    ordered_size = models.CharField(max_length=4)
     ordereditem_title = models.CharField(max_length=100)
     ordereditem_price = models.FloatField()
     ordereditem_totalprice = models.FloatField()
