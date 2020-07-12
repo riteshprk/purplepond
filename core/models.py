@@ -15,9 +15,9 @@ CATEGORY_CHOICES = (
 )
 
 LABEL_CHOICES = (
-    ('P', 'primary'),
-    ('S', 'secondary'),
-    ('D', 'danger')
+    ('P', 'New'),
+    ('S', 'Sale'),
+    ('D', 'Out of Stock')
 )
 
 ADDRESS_CHOICES = (
