@@ -13,7 +13,7 @@ cloudinary.config(
 DEBUG = True
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj'
-#DEFAULT_FILE_STORAGE = os.getenv('CLOUDINARY_URL')
+# DEFAULT_FILE_STORAGE = os.getenv('CLOUDINARY_URL')
 
 ALLOWED_HOSTS = []
 
@@ -78,12 +78,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DATABASES = {
-    "default": {
-        'default': os.getenv('DATABASE_URL')
-        #    "ENGINE": "django.db.backends.sqlite3",
-        #    "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
-    }
+    # os.getenv('DATABASE_URL')
+    "default":  os.getenv('DATABASE_URL')
+    # 'default': {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+    # }
 }
+
 
 if ENVIRONMENT == 'production':
     DEBUG = False
