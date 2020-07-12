@@ -23,8 +23,8 @@
 
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
-        
-        {% with url_path=request.get_full_path %}
+
+          {% with url_path=request.get_full_path %}
           <li class="nav-item {% if url_path == '/' %}active{% endif %}">
             <a class="nav-link" href="/">All
               <span class="sr-only">(current)</span>
@@ -39,7 +39,7 @@
           <li class="nav-item {% if url_path == '/category/O' %}active{% endif %}">
             <a class="nav-link" href="/category/O">Polo Shirts</a>
           </li>
-        {% endwith %}
+          {% endwith %}
         </ul>
         <!-- Links -->
 
@@ -87,7 +87,8 @@
               <h5>
                 <strong>
                   <a href="{{item.get_absolute_url}}" class="dark-grey-text">{{item.title}}
-                    <span class="badge badge-pill {{item.get_label_display}}-color">NEW</span>
+                    <span id="item_label"
+                      class="badge badge-pill {{text_value}}-color">{{item.get_label_display}}</span>
                   </a>
                 </strong>
               </h5>
@@ -136,8 +137,8 @@
         {% for page in page_obj.paginator.page_range %}
         {% if page == page_obj.number %}
         <li class="page-item active">
-          <a class="page-link" >{{page}}
-          <span class="sr-only">(current)</span>
+          <a class="page-link">{{page}}
+            <span class="sr-only">(current)</span>
           </a>
         </li>
         {% else %}
@@ -161,6 +162,23 @@
     <!--Pagination-->
 
   </div>
+
+  <script>
+    var text_value;
+    switch (item.get_label_diaplay()) {
+      case 'New':
+        text_value = "Primary";
+        break;
+      case 'Sale':
+        text_value = "Secondary";
+        break;
+      case 'Out of Stock':
+        text_value = "Danger";
+        break;
+      default:
+        text_value = "Primary";
+    }
+  </script>
 </main>
 <!--Main layout-->
 
