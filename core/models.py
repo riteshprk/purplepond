@@ -96,6 +96,9 @@ class OrderItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     ordered_size = models.CharField(max_length=6)
+    ordereditem_title = models.CharField(max_length=100)
+    ordereditem_price = models.FloatField()
+    ordereditem_totalprice = models.FloatField()
 
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"
@@ -135,6 +138,8 @@ class Order(models.Model):
     received = models.BooleanField(default=False)
     refund_requested = models.BooleanField(default=False)
     refund_granted = models.BooleanField(default=False)
+    order_discount_amount = models.FloatField()
+    order_total = models.FloatField()
 
     '''
     1. Item added to cart

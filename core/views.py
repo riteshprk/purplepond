@@ -455,11 +455,16 @@ def paypal_transaction(request):
             order_items = order.items.all()
             order_items.update(ordered=True)
             for item in order_items:
+                item.ordereditem_title = item.item.title
+                item.ordereditem_price = item.item.price
+                item.ordereditem_totalprice = item.get_final_price()
                 item.save()
 
             order.ordered = True
             order.payment = payment
             order.ref_code = create_ref_code()
+            order.order_discount_amount = order.coupon.amount
+            order.order_total = order.get_total
             order.save()
             messages.success(request, "Your order was successful!")
             return JsonResponse({'success': True})
