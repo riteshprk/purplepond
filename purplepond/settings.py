@@ -4,10 +4,10 @@ import cloudinary
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
-cloudinary.config( 
-  cloud_name = "hkcpnagjn", 
-  api_key = "498982868195916", 
-  api_secret = "Da20_8BC5fRrGzu2L1CEnFceCw4" 
+cloudinary.config(
+    cloud_name="hkcpnagjn",
+    api_key="498982868195916",
+    api_secret="Da20_8BC5fRrGzu2L1CEnFceCw4"
 )
 
 DEBUG = True
@@ -80,8 +80,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DATABASES = {
     "default": {
         'default': os.getenv('DATABASE_URL')
-    #    "ENGINE": "django.db.backends.sqlite3",
-    #    "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+        #    "ENGINE": "django.db.backends.sqlite3",
+        #    "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
 
