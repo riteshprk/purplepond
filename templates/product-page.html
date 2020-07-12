@@ -24,12 +24,10 @@
 
           <div class="mb-3">
             <h5>
-              <a href="{{item.get_absolute_url}}">
-                <span class="badge blue mr-1">{{object.get_category_display}}</span>
+              <a>
+                <span class="badge badge-info mr-1">{{object.get_category_display}}</span>
+                <span class="badge badge-pill {{object.label}}-color ml-1">{{object.get_label_display}}</span>
               </a>
-            </h5>
-
-            <h5><a><span class="badge badge-pill {{object.label}}-color ml-1">{{object.get_label_display}}</span></a>
             </h5>
 
           </div>
