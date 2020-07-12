@@ -33,7 +33,7 @@
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ object_item.order_date }}</td>
                                 <td>{{ object_item.ref_code }}</td>
-                                <td>{{ object_item.get_total}}</td>
+                                <td>£{{ object_item.get_total}}</td>
                             </tr>
 
 
@@ -55,8 +55,12 @@
                                 <td>{{ order_item.item.title }}</td>
                                 <td>{{ order_item.ordered_size }}</td>
                                 <td>{{ order_item.quantity}}</td>
-                                <td>{{ order_item.item.price }}</td>
-                                <td>{{ order_item.get_final_price}}</td>
+                                {% if order_item.item.discount_price %}
+                                <td>£{{  order_item.item.discount_price }}</td>
+                                {% else %}
+                                <td>£{{  order_item.item.price }}</td>
+                                {% endif %}
+                                <td>£{{ order_item.get_final_price}}</td>
                             </tr>
                             {% endfor %}
 
