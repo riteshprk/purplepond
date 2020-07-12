@@ -4,6 +4,22 @@
 
 <!--Main layout-->
 <main>
+  <script>
+    var text_value;
+    switch (item.get_label_display()) {
+      case 'New':
+        text_value = "primary";
+        break;
+      case 'Sale':
+        text_value = "secondary";
+        break;
+      case 'Out of Stock':
+        text_value = "danger";
+        break;
+      default:
+        text_value = "primary";
+    }
+  </script>
   <div class="container">
 
     <!--Navbar-->
@@ -163,22 +179,7 @@
 
   </div>
 
-  <script>
-    var text_value;
-    switch (item.get_label_display()) {
-      case 'New':
-        text_value = "Primary";
-        break;
-      case 'Sale':
-        text_value = "Secondary";
-        break;
-      case 'Out of Stock':
-        text_value = "Danger";
-        break;
-      default:
-        text_value = "Primary";
-    }
-  </script>
+
 </main>
 <!--Main layout-->
 
