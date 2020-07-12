@@ -100,8 +100,8 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=1)
     ordered_size = models.CharField(max_length=4)
     ordereditem_title = models.CharField(max_length=100)
-    ordereditem_price = models.FloatField()
-    ordereditem_totalprice = models.FloatField()
+    ordereditem_price = models.FloatField(blank=True, null=True)
+    ordereditem_totalprice = models.FloatField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"
@@ -141,8 +141,8 @@ class Order(models.Model):
     received = models.BooleanField(default=False)
     refund_requested = models.BooleanField(default=False)
     refund_granted = models.BooleanField(default=False)
-    order_discount_amount = models.FloatField()
-    order_total = models.FloatField()
+    order_discount_amount = models.FloatField(blank=True, null=True)
+    order_total = models.FloatField(blank=True, null=True)
 
     '''
     1. Item added to cart
