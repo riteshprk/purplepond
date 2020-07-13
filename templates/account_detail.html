@@ -5,6 +5,27 @@
 {% block head_title %}{% trans "My Account" %}{% endblock %}
 
 {% block content %}
+<style>
+.fas {
+  margin: 1em;
+}
+
+.fas::before {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: .5em solid transparent;
+  border-left-color: gray;
+  transform-origin: 0 50%;
+  transition: transform .25s;
+}
+
+.fas.down::before {
+  transform: rotate(90deg);
+  transition: transform .25s;
+}
+</style>
 <main>
     <div class="container">
 
@@ -85,7 +106,12 @@
     </div>
 
 
-
+<script>
+var arr = document.querySelector('.fas');
+arr.addEventListener('click', function(event) {
+  event.target.classList.toggle('down');
+});
+</script>
 
 </main>
 {% endblock%}
