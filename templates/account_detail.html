@@ -23,6 +23,9 @@
                                 <th scope="col">Ordered Date</th>
                                 <th scope="col">Order ID</th>
                                 <th scope="col">Total Price</th>
+                                {% if order.order_discount_amount %}
+                                <th scope="col">Discount</th>
+                                {% endif %}
 
                             </tr>
                         </thead>
@@ -33,7 +36,10 @@
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ object_item.order_date }}</td>
                                 <td>{{ object_item.ref_code }}</td>
-                                <td>£{{ object_item.get_total}}</td>
+                                <td>£{{ object_item.order_total}}</td>
+                                {% if order.order_discount_amount %}
+                                <td>£{{ order.order_discount_amount}}</td>
+                                {% endif %}
                             </tr>
 
 
@@ -44,7 +50,7 @@
                                     <th scope="col">Size</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Total Price</th>
+                                    <th scope="col">Quantity Price</th>
 
                                 </tr>
                             </thead>
@@ -52,15 +58,11 @@
                             {% for order_item in object_item.items.all %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ order_item.item.title }}</td>
+                                <td>{{ order_item.ordereditem_title }}</td>
                                 <td>{{ order_item.ordered_size }}</td>
                                 <td>{{ order_item.quantity}}</td>
-                                {% if order_item.item.discount_price %}
-                                <td>£{{  order_item.item.discount_price }}</td>
-                                {% else %}
-                                <td>£{{  order_item.item.price }}</td>
-                                {% endif %}
-                                <td>£{{ order_item.get_final_price}}</td>
+                                <td>£{{ order_item.ordereditem_price }}</td>
+                                <td>£{{ order_item.ordereditem_totalprice}}</td>
                             </tr>
                             {% endfor %}
 
