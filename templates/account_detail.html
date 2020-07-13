@@ -17,7 +17,7 @@
                     <h1>{% trans "My Account" %}</h1>
                     <h2>Order History</h2>
 <table class="table table-condensed" style="border-collapse:collapse;">
-
+    {% for object_item in object %}
     <thead>
         <tr><th>&nbsp;</th>
           <th scope="col">#</th>
@@ -31,7 +31,7 @@
     </thead>
 
     <tbody>
-    {% for object_item in object %}
+
         <tr data-toggle="collapse" data-target="#demo{{ forloop.counter }}" class="accordion-toggle">
             
              
