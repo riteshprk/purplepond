@@ -358,8 +358,6 @@ class PaymentView(View):
                     )
                 else:
                     # charge once off on the token
-                    print(amount)
-                    print(token)
                     charge = stripe.Charge.create(
                         amount=amount,  # cents
                         currency="usd",
