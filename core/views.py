@@ -310,7 +310,7 @@ class PaymentView(View):
                         context.update({
                             'card': card_list[0]
                         })
-                    return render(self.request, "payment.html", context)
+                return render(self.request, "payment.html", context)
             else:
                 if pay_option == 'paypal':
                     return render(self.request, "paypalpayment.html", context)
