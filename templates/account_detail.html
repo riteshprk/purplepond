@@ -5,22 +5,6 @@
 {% block head_title %}{% trans "My Account" %}{% endblock %}
 
 {% block content %}
-<style>
-#arrowfas {
-  margin: 1em;
-}
-
-#arrowfas::before {
-  position: absolute;
-  transform-origin: 0 50%;
-  transition: transform .25s;
-}
-
-#arrowfas.down::before {
-  transform: rotate(90deg);
-  transition: transform .25s;
-}
-</style>
 <main>
     <div class="container">
 
@@ -51,7 +35,7 @@
         <tr data-toggle="collapse" data-target="#demo{{ forloop.counter }}" class="accordion-toggle">
             
              
-             <td><a><i style='font-size:24px' class='fas'id='arrowfas'>&#xf13a;</i></a></td>
+             <td><a><i style='font-size:24px' class='fas'>&#xf13a;</i></a></td>
              <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ object_item.order_date }}</td>
                                 <td>{{ object_item.ref_code }}</td>
@@ -100,13 +84,6 @@
         </section>
     </div>
 
-
-<script>
-var arr = document.querySelector('#arrowfas');
-arr.addEventListener('click', function(event) {
-  event.target.classList.toggle('down');
-});
-</script>
 
 </main>
 {% endblock%}
