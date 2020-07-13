@@ -344,8 +344,8 @@ class PaymentView(View):
                     )
                     customer.sources.create(source=token)
                     userprofile.stripe_customer_id = customer['id']
-                userprofile.one_click_purchasing = True
-                userprofile.save()
+                    userprofile.one_click_purchasing = True
+                    userprofile.save()
             amount = int(order.get_total() * 100)
 
             try:
