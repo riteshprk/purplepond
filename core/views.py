@@ -349,7 +349,7 @@ class PaymentView(View):
 
             try:
 
-                if save:
+                if use_default or save:
                     # charge the customer because we cannot charge the token more than once
                     charge = stripe.Charge.create(
                         amount=amount,  # cents
