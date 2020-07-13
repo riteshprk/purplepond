@@ -95,33 +95,53 @@
 
     <thead>
         <tr><th>&nbsp;</th>
-            <th>Job Name</th>
-            <th>Description</th>
-            <th>Provider Name</th>
-            <th>Region</th>
-            <th>Status</th>
+          <th scope="col">#</th>
+            <th scope="col">Ordered Date</th>
+            <th scope="col">Order ID</th>
+            <th scope="col">Total Price</th>
+            {% if order.order_discount_amount %}
+            <th scope="col">Discount</th>
+            {% endif %}
         </tr>
     </thead>
 
     <tbody>
+    {% for object_item in object %}
         <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-            <td><a><i style='font-size:24px' class='fas'>&#xf13a;</i></a></td>
-            <td>OBS Name</td>
-            <td>OBS Description</td>
-            <td>hpcloud</td>
-            <td>nova</td>
-          <td> created</td>
+            
+             <th scope="row">{{ forloop.counter }}</th>
+             <td><a><i style='font-size:24px' class='fas'>&#xf13a;</i></a></td>
+                                <td>{{ object_item.order_date }}</td>
+                                <td>{{ object_item.ref_code }}</td>
+                                <td>£{{ object_item.order_total}}</td>
+                                {% if order.order_discount_amount %}
+                                <td>£{{ order.order_discount_amount}}</td>
+                                {% endif %}
 
         </tr>
         <tr>
             <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="demo1"> 
               <table class="table table-striped">
                       <thead>
-                        <tr><th>Access Key</th><th>Secret Key</th><th>Status </th><th> Created</th><th> Expires</th><th>Actions</th></tr>
+                        <tr><th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity Price</th>
+                                    </tr>
                       </thead>
                       <tbody>
-                        <tr><td>access-key-1</td><td>secretKey-1</td><td>Status</td><td>some date</td><td>some date</td><td><a href="#" class="btn btn-default btn-sm">
-                  <i class="glyphicon glyphicon-cog"></i></a></td></tr>
+                            {% for order_item in object_item.items.all %}     
+                        <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ order_item.ordereditem_title }}</td>
+                                <td>{{ order_item.ordered_size }}</td>
+                                <td>{{ order_item.quantity}}</td>
+                                <td>£{{ order_item.ordereditem_price }}</td>
+                                <td>£{{ order_item.ordereditem_totalprice}}</td>
+                        </tr>
+                            {% endfor %}
                         
                      
                     
@@ -130,7 +150,7 @@
               
               </div> </td>
         </tr>
-       
+        {% endfor %}
     </tbody>
 </table>
                            </div>
