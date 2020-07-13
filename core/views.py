@@ -463,7 +463,8 @@ def paypal_transaction(request):
             order.ordered = True
             order.payment = payment
             order.ref_code = create_ref_code()
-            order.order_discount_amount = order.coupon.amount
+            if order.coupon.amount:
+                order.order_discount_amount = order.coupon.amount
             order.order_total = order.get_total()
             order.save()
             messages.success(request, "Your order was successful!")
