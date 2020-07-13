@@ -32,7 +32,7 @@
 
     <tbody>
     {% for object_item in object %}
-        <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+        <tr data-toggle="collapse" data-target="#demo{{ forloop.counter }}" class="accordion-toggle">
             
              
              <td><a><i style='font-size:24px' class='fas'>&#xf13a;</i></a></td>
@@ -46,7 +46,7 @@
 
         </tr>
         <tr>
-            <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="demo1"> 
+            <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="demo{{ forloop.counter }}"> 
               <table class="table table-striped">
                       <thead>
                         <tr><th scope="col">#</th>
