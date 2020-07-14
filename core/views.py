@@ -595,11 +595,12 @@ def remove_single_item_from_cart(request, slug, size):
         return redirect("core:product", slug=slug)
 
 
+@login_required
 def get_coupon(request, code):
     try:
         coupon = Coupon.objects.get(code=code)
         return coupon
-    except ObjectDoesNotExist:
+    except:  # ObjectDoesNotExist:
         messages.info(request, "This coupon does not exist")
         return redirect("core:checkout")
 
