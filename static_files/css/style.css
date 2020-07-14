@@ -15,6 +15,9 @@ body,
 
 /* Adjustment for mobile devices*/
 @media (max-width: 776px) {
+  .custom_width {
+    width: 220px;
+}
   .carousel {
     height: 100%; } }
 
