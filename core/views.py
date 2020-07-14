@@ -601,7 +601,6 @@ def get_coupon(request, code):
         coupon = Coupon.objects.get(code=code)
         return coupon
     except ObjectDoesNotExist:
-        messages.info(request, "This coupon does not exist")
         return None
 
 
