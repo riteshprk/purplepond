@@ -662,8 +662,10 @@ class MyAccount(View):
         try:
             order = Order.objects.filter(
                 user=self.request.user, ordered=True).order_by('-order_date')
+            user_detail = Address.user.filter(user=self.request.user)
             context = {
-                'object': order
+                'object': order,
+                'user': user_detail
             }
             return render(self.request, 'account_detail.html', context)
         except ObjectDoesNotExist:
