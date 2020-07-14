@@ -539,9 +539,13 @@ def remove_from_cart(request, slug, size):
         #     order.items.remove(order_item)
         #     order_item.delete()
         order.delete()
+        order = Order.objects.get(user=request.user, ordered=False)
+        if order.coupon:
+            order.coupon.delete()
         messages.info(request, "This item was removed from your cart.")
         return redirect("core:order-summary")
     else:
+
         messages.info(request, "This item was not in your cart")
         return redirect("core:product", slug=slug)
 
@@ -588,6 +592,9 @@ def remove_single_item_from_cart(request, slug, size):
             return redirect("core:order-summary")
         else:
             order.delete()
+            order = Order.objects.get(user=request.user, ordered=False)
+            if order.coupon:
+                order.coupon.delete()
             messages.info(request, "This item quantity was updated.")
             return redirect("core:order-summary")
     else:
