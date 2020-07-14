@@ -15,15 +15,16 @@
             <div class="row wow fadeIn">
                 <div class="col-12">
                     <h3>{% trans "My Account" %}</h3>
-                    <div>
-                    <strong><p class="col-6">Username:</p></strong><p class="col-6 ml-2 mt-4">{{user.username}}</p>
-                    
-                    <strong><p class="col-6">Email:</p></strong><p class="col-6 ml-2 mt-4">{{user.email}}</p>
+                    <div class="row">
+                    <div class="span4">Username:</div>
+                    <div class="span8">{{user.username}}</div>
                     </div>
-                    <div> 
+                    <div class="row">
+                    <div class="span4">Email:</div>
+                    <div class="span8">{{user.email}}</div>
+                    </div>
                     <button class= "btn btn-primary mt-4">Edit Profile</button>
                     <button class= "btn btn-primary ml-2 mt-4">Reset Password</button>
-                    </div>
                     <h3 class="mt-4">Order History</h3>
 <table class="table table-condensed" style="border-collapse:collapse;">
     <thead>
