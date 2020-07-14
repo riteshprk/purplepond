@@ -14,7 +14,7 @@ body,
       height: 100%; }
 
 /* Adjustment for mobile devices*/
-@media (max-width: 776px) {
+@media (max-device-width: 400px) {
   .custom_width {
     width: 220px;
 }
