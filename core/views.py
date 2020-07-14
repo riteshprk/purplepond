@@ -615,8 +615,9 @@ class AddCouponView(View):
                 order = Order.objects.get(
                     user=self.request.user, ordered=False)
                 order.coupon.code = get_coupon(self.request, code)
+                if order.coupon.code:
+                    messages.success(self.request, "Successfully added coupon")
                 order.save()
-                messages.success(self.request, "Successfully added coupon")
                 return redirect("core:checkout")
             except ObjectDoesNotExist:
                 messages.info(self.request, "You do not have an active order")
