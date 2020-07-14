@@ -662,7 +662,7 @@ class MyAccount(View):
         try:
             order = Order.objects.filter(
                 user=self.request.user, ordered=True).order_by('-order_date')
-            user_detail = Address.user.get(user=self.request.user)
+            user_detail = self.request.user
             context = {
                 'object': order,
                 'user': user_detail
