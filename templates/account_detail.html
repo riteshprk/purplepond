@@ -15,9 +15,12 @@
             <div class="row wow fadeIn">
                 <div class="col-12">
                     <h3>{% trans "My Account" %}</h3>
-                    
-                    <a>Username:<i>{{user.username}}</i></a>
-                    <a>Email:<i>{{user.email}}</i></a>
+                    <div>
+                    <strong><a>Username:<a/></strong><a>{{user.username}}</a>
+                    </div>
+                    <div>
+                    <strong><a>Email:<a/></strong><a>{{user.email}}</a>
+                    </div>
 
 <table class="table table-condensed" style="border-collapse:collapse;">
     <thead>
