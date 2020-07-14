@@ -600,7 +600,7 @@ def get_coupon(request, code):
     try:
         coupon = Coupon.objects.get(code=code)
         return coupon
-    except:  # ObjectDoesNotExist:
+    except ObjectDoesNotExist:
         messages.info(request, "This coupon does not exist")
         return redirect("core:checkout")
 
@@ -614,15 +614,10 @@ class AddCouponView(View):
                 code = form.cleaned_data.get('code')
                 order = Order.objects.get(
                     user=self.request.user, ordered=False)
-                order.coupon = get_coupon(self.request, code)
-                if order.coupon.code == code:
-                    order.save()
-                    messages.success(self.request, "Successfully added coupon")
-                    return redirect("core:checkout")
-                else:
-                    messages.error(
-                        self.request, "Coupon cannot be validated or expired")
-                    return redirect("core:checkout")
+                order.coupon.code = get_coupon(self.request, code)
+                order.save()
+                messages.success(self.request, "Successfully added coupon")
+                return redirect("core:checkout")
             except ObjectDoesNotExist:
                 messages.info(self.request, "You do not have an active order")
                 return redirect("core:checkout")
