@@ -14,9 +14,10 @@
             <!--Grid row-->
             <div class="row wow fadeIn">
                 <div class="col-12">
-                    <h1>{% trans "My Account" %}</h1>
-                    <h3>Name</h2>
-                    <a>{{user.email}}</a>
+                    <h3>{% trans "My Account" %}</h3>
+                    
+                    <a>Username:<i>{{user.username}}</i></a>
+                    <a>Email:<i>{{user.email}}</i></a>
 
 <table class="table table-condensed" style="border-collapse:collapse;">
     <thead>
