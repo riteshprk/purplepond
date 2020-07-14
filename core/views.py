@@ -623,6 +623,9 @@ class AddCouponView(View):
             except ObjectDoesNotExist:
                 messages.info(self.request, "You do not have an active order")
                 return redirect("core:checkout")
+        else:
+            messages.info(self.request, "Please enter valid promo-code")
+            return redirect("core:checkout")
 
 
 class RequestRefundView(View):
