@@ -614,10 +614,12 @@ class AddCouponView(View):
                 code = form.cleaned_data.get('code')
                 order = Order.objects.get(
                     user=self.request.user, ordered=False)
-                order.coupon.code = get_coupon(self.request, code)
-                if order.coupon.code:
+                if get_coupon(self.request, code):
+                    order.coupon = get_coupon(self.request, code)
+                    order.save()
                     messages.success(self.request, "Successfully added coupon")
-                order.save()
+                    return redirect("core:checkout")
+                messages.info(self.request, "Coupon is not valid or expired")
                 return redirect("core:checkout")
             except ObjectDoesNotExist:
                 messages.info(self.request, "You do not have an active order")
