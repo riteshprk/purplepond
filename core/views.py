@@ -691,6 +691,6 @@ class MyAccount(View):
         pass
 
 
-def order_confirmation(request, data):
-    order = Order.objects.get(ref_code=data) or None
+def order_confirmation(request, order_ref_code):
+    order = Order.objects.get(ref_code=order_ref_code) or None
     return render(request, 'order_confirmation.html', order)
