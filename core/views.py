@@ -29,7 +29,7 @@ print(stripe.api_key)
 
 
 def create_ref_code():
-    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
 
 def products(request):
