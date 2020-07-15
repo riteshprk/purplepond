@@ -83,7 +83,7 @@
     }).render('#paypal-button-container');
 
     function submitData(data) {
-        fetch('capture-paypal-transaction/', {
+        fetch('capture-paypal-transaction', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
