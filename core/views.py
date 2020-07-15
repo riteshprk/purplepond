@@ -391,7 +391,7 @@ class PaymentView(View):
                 order.save()
 
                 messages.success(self.request, "Your order was successful!")
-                return redirect(order.ref_code)
+                return redirect('/'+order.ref_code)
             except stripe.error.CardError as e:
                 # Since it's a decline, stripe.error.CardError will be caught
                 body = e.json_body
