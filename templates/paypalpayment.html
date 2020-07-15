@@ -97,8 +97,9 @@
             .then((data) => {
                 if (data['success']) {
                     order_ref_code = data["order_ref_code"]
+                    console.log(order_ref_code)
                     //  block of code to be executed if the condition is true
-                    window.location.href = "{% url 'core:order_confirmation' {{order_ref_code}} %}"
+                    window.location.href = "{% url 'core:order_confirmation' '{{order_ref_code}}' %}"
 
                 } else {
                     //  block of code to be executed if the condition is false
