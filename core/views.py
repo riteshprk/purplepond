@@ -391,7 +391,7 @@ class PaymentView(View):
                 order.save()
 
                 messages.success(self.request, "Your order was successful!")
-                return redirect("/")
+                return redirect("core:order_confirmation", 'stripe', order.ref_code)
 
             except stripe.error.CardError as e:
                 # Since it's a decline, stripe.error.CardError will be caught
@@ -473,9 +473,8 @@ def paypal_transaction(request):
                 order.order_discount_amount = order.coupon.amount
             order.order_total = order.get_total()
             order.save()
-            order_ref_code = order.ref_code
             messages.success(request, "Your order was successful!")
-            return JsonResponse({'success': True, 'order_ref_code': order_ref_code})
+            return JsonResponse({'success': True, 'order_ref_code': order.ref_code})
 
         except Exception as e:
             print(e)
