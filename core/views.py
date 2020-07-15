@@ -390,7 +390,7 @@ class PaymentView(View):
                 order.order_total = order.get_total()
                 order.save()
 
-                messages.success(self.request, "Your order was successful!")
+                #messages.success(self.request, "Your order was successful!")
                 return render("order_confirmation.html", 'stripe', 'order.ref_code')
 
             except stripe.error.CardError as e:
