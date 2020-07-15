@@ -391,7 +391,7 @@ class PaymentView(View):
                 order.save()
 
                 messages.success(self.request, "Your order was successful!")
-                return render(self.request, "order_confirmation.html", 'stripe', 'order.ref_code')
+                return render("order_confirmation.html", 'stripe', 'order.ref_code')
 
             except stripe.error.CardError as e:
                 # Since it's a decline, stripe.error.CardError will be caught
