@@ -97,7 +97,7 @@
             .then((data) => {
                 if (data['success']) {
                     //  block of code to be executed if the condition is true
-                    window.location.href = "{% url 'core:index' %}"
+                    window.location.href = "{% url 'core:order_confirmation' 'data[order_ref_code]' %}"
 
                 } else {
                     //  block of code to be executed if the condition is false

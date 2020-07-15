@@ -473,8 +473,9 @@ def paypal_transaction(request):
                 order.order_discount_amount = order.coupon.amount
             order.order_total = order.get_total()
             order.save()
+            order_ref_code = order.ref_code
             messages.success(request, "Your order was successful!")
-            return JsonResponse({'success': True})
+            return JsonResponse({'success': True, 'order_ref_code': order_ref_code})
 
         except Exception as e:
             print(e)
@@ -688,3 +689,8 @@ class MyAccount(View):
     def post(self, *args, **kwargs):
         #form = RefundForm(self.request.POST)
         pass
+
+
+def order_confirmation(request, data):
+    order = Order.objects.get(ref_code=data) or None
+    return render(request, 'order_confirmation.html', order)

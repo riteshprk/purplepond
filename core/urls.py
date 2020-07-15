@@ -13,7 +13,8 @@ from .views import (
     RequestRefundView,
     CategoryView,
     paypal_transaction,
-    MyAccount
+    MyAccount,
+    order_confirmation
 )
 
 app_name = 'core'
@@ -36,8 +37,9 @@ urlpatterns = [
     path('payment/paypal/capture-paypal-transaction/',
          paypal_transaction, name='paypalpayment'),
     path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
-    path('myaccount/', MyAccount.as_view(), name='myaccount')
-
+    path('myaccount/', MyAccount.as_view(), name='myaccount'),
+    path('payment/paypal/capture-paypal-transaction/',
+         order_confirmation, name='order_confirmation')
 
 
 ]
