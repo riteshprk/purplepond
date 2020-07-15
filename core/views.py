@@ -431,8 +431,8 @@ class PaymentView(View):
             except Exception as e:
                 # Something else happened, completely unrelated to Stripe.
                 # It is related to us. Send notification as mail
-                messages.warning(
-                    self.request, "A serious error has been occure. We have been notified")
+                #"A serious error has been occure. We have been notified"
+                messages.warning(self.request, e)
                 return redirect("/")
 
         messages.warning(self.request, "Invalid data received")
