@@ -521,24 +521,15 @@ def add_to_cart(request, slug):
 
 @login_required
 def remove_from_cart(request, slug, size):
-    order = OrderItem.objects.filter(
+    order_item = OrderItem.objects.filter(
         user=request.user,
         item__slug=slug,
         ordered_size=size,
         ordered=False
     )[0]
-    if order:
-        #order = order_qs[0]
-        # check if the order item is in the order
-        # if order.items.filter(item__slug=item.slug).exists():
-        #     order_item = OrderItem.objects.filter(
-        #         item=item,
-        #         user=request.user,
-        #         ordered_size=get_size,
-        #         ordered=False
-        #     )[0]
-        #     order.items.remove(order_item)
-        #     order_item.delete()
+    if order_item:
+        order_item.delete()
+        order = order_item.Order_set.all()
         order.delete()
         messages.info(request, "This item was removed from your cart.")
         return redirect("core:order-summary")
@@ -573,22 +564,24 @@ def add_single_item_to_cart(request, slug, size):
 @login_required
 def remove_single_item_from_cart(request, slug, size):
     #item = get_object_or_404(Item, slug=slug)
-    order = OrderItem.objects.filter(
+    order_item = OrderItem.objects.filter(
         user=request.user,
         item__slug=slug,
         ordered_size=size,
         ordered=False
     )[0]
-    if order:
+    if order_item:
        # order = order_qs[0]
         # check if the order item is in the order
 
-        if order.quantity > 1:
-            order.quantity -= 1
-            order.save()
+        if order_item.quantity > 1:
+            order_item.quantity -= 1
+            order_item.save()
             messages.info(request, "This item quantity was updated.")
             return redirect("core:order-summary")
         else:
+            order_item.delete()
+            order = order_item.Order_set.all()
             order.delete()
             messages.info(request, "This item quantity was updated.")
             return redirect("core:order-summary")
