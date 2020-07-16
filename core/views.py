@@ -80,8 +80,8 @@ class HomeView(ListView):
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         try:
-            order = Order.objects.filter(
-                user=self.request.user, ordered=False).order_by('pk').first()
+            order = Order.objects.get(
+                user=self.request.user, ordered=False).order_by('id')
             context = {
                 'object': order
             }
