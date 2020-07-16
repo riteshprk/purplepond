@@ -528,8 +528,9 @@ def remove_from_cart(request, slug, size):
         ordered=False
     )[0]
     if order_item:
-        order = order_item.Order_set.all()
-        order.delete()
+        order = order.objects.get(items=order_item)
+        if order:
+            order.delete()
         order_item.delete()
         messages.info(request, "This item was removed from your cart.")
         return redirect("core:order-summary")
@@ -571,6 +572,10 @@ def remove_single_item_from_cart(request, slug, size):
         ordered=False
     )[0]
     if order_item:
+        order = order.objects.get(items=order_item)
+        if order:
+            order.delete()
+        order_item.delete()
        # order = order_qs[0]
         # check if the order item is in the order
 
