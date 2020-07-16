@@ -4,7 +4,7 @@ This is a very simple e-commerce website built with Django.
 
 ## Quick demo
 
-[![alt text](https://purplestore.s3-us-west-2.amazonaws.com/purplepond.gif, "Logo")]
+https://purplestore.s3-us-west-2.amazonaws.com/purplepond.gif
 ---
 
 ---
