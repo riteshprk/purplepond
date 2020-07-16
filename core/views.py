@@ -515,6 +515,8 @@ def add_to_cart(request, slug):
             order.items.add(order_item)
             messages.info(request, "This item was added to your cart.")
             return redirect("core:product", slug=slug)
+    messages.info(request, "Please add product in your cart.")
+    return redirect("core:product", slug=slug)
 
 
 @login_required
