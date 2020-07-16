@@ -572,22 +572,17 @@ def remove_single_item_from_cart(request, slug, size):
         ordered=False
     )[0]
     if order_item:
-        order = Order.objects.get(items=order_item)
-        if order:
-            order.delete()
-        order_item.delete()
-       # order = order_qs[0]
-        # check if the order item is in the order
-
         if order_item.quantity > 1:
             order_item.quantity -= 1
             order_item.save()
             messages.info(request, "This item quantity was updated.")
             return redirect("core:order-summary")
         else:
-            order = order_item.Order_set.all()
-            order.delete()
-            order_item.delete()
+            if order_item:
+                order = Order.objects.get(items=order_item)
+                if order:
+                    order.delete()
+                order_item.delete()
             messages.info(request, "This item quantity was updated.")
             return redirect("core:order-summary")
     else:
