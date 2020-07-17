@@ -18,9 +18,28 @@ This is a fully functional e-commerce website built with Django, Python.
 ## Project Summary
 
 The website displays products. Users can add and remove products to/from their cart while also specifying the quantity of each item. They can then enter their address and choose Stripe to handle the payment processing.
-
-
 ---
+
+## ✨ Features
+
+- Issue discussions
+- Markdown support
+- Comment reactions
+- Social interactions
+- User reputation system
+- \# Reference other bugs
+- @ Mentions users
+- Notifications
+- Bug labels
+
+## Tech Stack
+
+| Stack    | -                                                                                                  | -                                                                                                 | -                                                                                                | -                                                                                                                | -                                                                                                   |
+| -------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| FrontEnd | <p align="center"><img src="./assets/reactjs_logo.png" width="100" height="100"> <br />Reactjs</p> | <p align="center"><img src="./assets/ts_logo.png" width="100" height="100"> <br />Typescript</p>  | <p align="center"><img src="./assets/redux_logo.png" width="100" height="100"> <br />Redux</p>   | <p align="center"><img src="./assets/styledcompo_logo.png" width="100" height="100"> <br />Styled Components</p> | <p align="center"><img src="./assets/cy_logo.png" width="100" height="100"> <br />Cypress</p>       |
+| BackEnd  | <p align="center"><img src="./assets/nodejs_logo.png" width="100" height="100"> <br />Nodejs</p>   | <p align="center"><img src="./assets/mongo_logo2.png" width="100" height="100"> <br />MongoDB</p> | <p align="center"><img src="./assets/heroku_logo.png" width="100" height="100"> <br />Heroku</p> | <p align="center"><img src="./assets/express_logo.png" width="100" height="100"> <br />Express</p>               | <p align="center"><img src="./assets/socket_logo.png" width="100" height="100"> <br />Socket.io</p> |
+
+
 
 ## Running this project
 
