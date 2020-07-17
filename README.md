@@ -14,12 +14,6 @@ This is a fully functional e-commerce website built with Django, Python.
     <a href="https://github.com/riteshprk/purplepond/issues">Request Feature</a>
   </p>
 
-
-## Project Summary
-
-The website displays products. Users can add and remove products to/from their cart while also specifying the quantity of each item. They can then enter their address and choose Stripe to handle the payment processing.
-
-
 ## ✨ Features
 
 - Categories display and search
@@ -34,9 +28,9 @@ The website displays products. Users can add and remove products to/from their c
 
 ## Tech Stack
 
-| Stack    | -                                                                                                  | -                                                                                                 | 
-| -------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | 
-| FrontEnd | <p align="center"><img src="./media/reactjs_logo.png" width="100" height="100"> <br />Reactjs</p> | <p align="center"><img src="./assets/ts_logo.png" width="100" height="100"> <br />Typescript</p>  | 
+| Stack    | -                                                                                                  | -                                                                                                 | -                                                                                                 | 
+| -------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | 
+| FrontEnd | <p align="center"><img src="./media/html.png" width="100" height="100"> <br />HTML</p> | <p align="center"><img src="./media/css.png" width="100" height="100"> <br />CSS</p>  |  <p align="center"><img src="./media/js.png" width="100" height="100"> <br />JavaScript</p>  | 
 | BackEnd  | <p align="center"><img src="./media/python.png" width="100" height="100"> <br />Python</p>   | <p align="center"><img src="./media/django.png" width="100" height="100"> <br />Django</p> |
 
 
