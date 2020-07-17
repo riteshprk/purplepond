@@ -9,6 +9,7 @@ This is a fully functional e-commerce website built with Django, Python.
     <img src="./media/purplepondhome.png" alt="PurplePond Logo">
   </a>
 </p>
+
 ---
  <p align="center">
     <a href="https://purplepond.herokuapp.com">View Demo</a>
