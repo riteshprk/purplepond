@@ -6,10 +6,13 @@ This is a fully functional e-commerce website built with Django, Python.
 
 ![Alt Text](https://purplestore.s3-us-west-2.amazonaws.com/pupleponstore_r.gif)
 ---
-
-## Preproduction live link
-
-https://purplepond.herokuapp.com/
+ <p align="center">
+    <a href="https://purplepond.herokuapp.com">View Demo</a>
+    ·
+    <a href="https://github.com/riteshprk/purplepond/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/riteshprk/purplepond/issues">Request Feature</a>
+  </p>
 
 
 ## Project Summary
