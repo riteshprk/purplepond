@@ -4,7 +4,11 @@ This is a fully functional e-commerce website built with Django, Python.
 
 ## Quick demo
 
-![Alt Text](https://purplestore.s3-us-west-2.amazonaws.com/pupleponstore_r.gif)
+<p align="center">
+  <a href="https://puplepond.herokuapp.com">
+    <img src="./media/purplepondhome.png" alt="PurplePond Logo">
+  </a>
+</p>
 ---
  <p align="center">
     <a href="https://purplepond.herokuapp.com">View Demo</a>
