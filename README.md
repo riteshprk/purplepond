@@ -23,8 +23,6 @@ This is a fully functional e-commerce website built with Django, Python.
 - Payment method- Stripe and Paypal
 - Order confirmation and Order history
 - User account handling
-- Password reset or change.
-
 
 ## Tech Stack
 
@@ -34,8 +32,9 @@ This is a fully functional e-commerce website built with Django, Python.
 | BackEnd  | <p align="center"><img src="./media/python.png" width="100" height="100"> <br />Python</p>   | <p align="center"><img src="./media/django.png" width="100" height="100"> <br />Django</p> |
 
 
+## :rocket: Quick start
 
-## Running this project
+Start developing locally.
 
 To get this project up and running you should start by having Python installed on your computer. It's advised you create a virtual environment to store your projects dependencies separately. You can install virtualenv with
 
@@ -82,3 +81,4 @@ If you'd like to support this project and all the other open source work on this
 Sponsor through GitHub Sponsors. On GitHub, [this repository](https://github.com/riteshprk/purplepond) shows a button where you can Sponsor the contributors.
 
 
+Made with ❤️ and Python
