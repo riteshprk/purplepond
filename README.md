@@ -2,7 +2,6 @@
 
 This is a fully functional e-commerce website built with Django, Python.
 
-## Quick demo
 
 <p align="center">
   <a href="https://puplepond.herokuapp.com">
