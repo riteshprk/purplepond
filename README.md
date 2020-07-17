@@ -70,19 +70,9 @@ Now you can run the project with this command
 python manage.py runserver
 ```
 
-**Note** if you want payments to work you will need to enter your own Stripe API keys into the `.env` file in the settings files.
-
+**Note** if you want Stripe and Paypal payments to work you will need to enter your own Stripe API keys and Paypal account into the `.env` file in the settings files.
 
 
 ---
-
-## Support
-
-If you'd like to support this project and all the other open source work on this organization, you can use the following options
-
-### GitHub Sponsors
-
-Sponsor through GitHub Sponsors. On GitHub, [this repository](https://github.com/riteshprk/purplepond) shows a button where you can Sponsor the contributors.
-
 
 Made with ❤️ and Python
